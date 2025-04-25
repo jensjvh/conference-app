@@ -39,6 +39,10 @@ interface CardTextProps {
   content: ContentProps;
 }
 
+interface MapProps {
+    floor: number;
+}
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -67,10 +71,11 @@ const CardText = (props: CardTextProps) => (
   </React.Fragment>
 );
 
-const ConferenceMap = () => {
+const ConferenceMap = (props: MapProps) => {
+  const image_path: string = `/floor_${props.floor}.png`
   return (
     <MapInteractionCSS>
-      <img src="/floor_1.png" alt="Conference Map for Main Building Floor 1" />
+      <img src={image_path} alt="Conference Map for Main Building Floor 1" />
     </MapInteractionCSS>
   );
 };
@@ -214,7 +219,10 @@ const App = () => {
   const [activeTab, setActiveTab] = useState<string>("conference");
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [conferenceData, setConferenceData] = useState<any>(null);
+  const [currentFloor, setCurrentFloor] = useState<number>(1);
 
+  // This is not used right now
+  // --------------------------
   useEffect(() => {
     const mockData = {
       schedule: [
@@ -233,6 +241,7 @@ const App = () => {
     };
 
     setConferenceData(mockData);
+    // --------------------------
 
     axios
       .get("/api/conference")
@@ -254,6 +263,17 @@ const App = () => {
       </Typography>
     );
   };
+
+  const FloorButton = (floor_n: number) => (
+    <Button
+      color="primary"
+      variant="outlined"
+      onClick={() => setCurrentFloor(floor_n)}
+      sx={{ mb: 0.5 }}
+    >
+      Floor {floor_n}
+    </Button>
+  );
 
   const renderContent = () => {
     switch (activeTab) {
@@ -349,7 +369,13 @@ const App = () => {
       case "map":
         return (
           <Box>
-            <ConferenceMap />
+            <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center', gap: 1 }}>
+                {FloorButton(1)}
+                {FloorButton(2)}
+                {FloorButton(3)}
+                {FloorButton(4)}
+            </Box>
+            <ConferenceMap floor={currentFloor} />
           </Box>
         );
       case "feedback":
