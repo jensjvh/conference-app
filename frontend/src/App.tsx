@@ -70,7 +70,7 @@ const CardText = (props: CardTextProps) => (
 const ConferenceMap = () => {
   return (
     <MapInteractionCSS>
-      <img src="/map.png" alt="Conference Map" />
+      <img src="/floor_1.png" alt="Conference Map for Main Building Floor 1" />
     </MapInteractionCSS>
   );
 };
