@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { MapInteractionCSS } from "react-map-interaction";
-import axios from "axios";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import {
@@ -218,36 +217,7 @@ const cloudSessions = [
 const App = () => {
   const [activeTab, setActiveTab] = useState<string>("conference");
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
-  const [conferenceData, setConferenceData] = useState<any>(null);
   const [currentFloor, setCurrentFloor] = useState<number>(1);
-
-  // This is not used right now
-  // --------------------------
-  useEffect(() => {
-    const mockData = {
-      schedule: [
-        { time: "9:00 AM", event: "Registration", speaker: "" },
-        {
-          time: "10:00 AM",
-          event: "Opening Ceremony",
-          speaker: "Conference Chair",
-        },
-        {
-          time: "11:00 AM",
-          event: "Keynote: Future of AI",
-          speaker: "Dr. Jane Smith",
-        },
-      ],
-    };
-
-    setConferenceData(mockData);
-    // --------------------------
-
-    axios
-      .get("/api/conference")
-      .then((response) => setConferenceData(response.data))
-      .catch((error) => console.error("Error fetching conference data", error));
-  }, []);
 
   const ConferenceInfo = () => {
     return (
