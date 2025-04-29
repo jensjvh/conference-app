@@ -97,7 +97,10 @@ function Schedule() {
   const theme = useTheme();
   return (
     <Box>
-      <Typography variant="h4" gutterBottom>
+      <Typography
+            variant="h4"
+            sx={{ fontWeight: 'bold', pb: 4 }}
+            >
         Cloud 2024 Technical Program
       </Typography>
 
