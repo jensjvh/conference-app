@@ -56,26 +56,36 @@ function UsefulLinks() {
         <Typography variant="h2" component="div">
           Find out more about Helsinki!
         </Typography>
-        <Grid container spacing={2}>
-          <Grid size={6}>
-            <Link href={text_content_hsl.link} target="_blank" rel="noopener">
-              <Card variant="outlined">
-                <CardText content={text_content_hsl} />
-              </Card>
-            </Link>
-          </Grid>
-          <Grid size={6}>
-            <Link
-              href={text_content_my_helsinki.link}
-              target="_blank"
-              rel="noopener"
-            >
-              <Card variant="outlined">
-                <CardText content={text_content_my_helsinki} />
-              </Card>
-            </Link>
-          </Grid>
-        </Grid>
+        <Box sx={{ mb: 2, display: "flex", justifyContent: "center", gap: 1 }}>
+            <Grid container spacing={2}>
+            <Grid size={6}>
+                <Link href={text_content_hsl.link} target="_blank" rel="noopener">
+                <Card variant="outlined" style={{ maxWidth: "10rem",
+                                                  maxHeight: "10rem",
+                                                  minWidth: "10rem",
+                                                  minHeight: "10rem",
+                }}>
+                    <CardText content={text_content_hsl} />
+                </Card>
+                </Link>
+            </Grid>
+            <Grid size={6}>
+                <Link
+                href={text_content_my_helsinki.link}
+                target="_blank"
+                rel="noopener"
+                >
+                <Card variant="outlined" style={{ maxWidth: "10rem",
+                                                  maxHeight: "10rem",
+                                                  minWidth: "10rem",
+                                                  minHeight: "10rem",
+                }}>
+                    <CardText content={text_content_my_helsinki} />
+                </Card>
+                </Link>
+            </Grid>
+            </Grid>
+        </Box>
       </Box>
     );
 };
