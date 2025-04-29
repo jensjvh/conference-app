@@ -90,11 +90,17 @@ const UsefulLinks = () => {
 
   return (
     <React.Fragment>
+       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-400 to-purple-600 text-white">
+      <h1 className="text-4xl font-bold">Tailwind is working! 🎉</h1>
+    </div>
       <Typography variant="h2" component="div">
         Find out more about Helsinki!
       </Typography>
       <Grid container spacing={2}>
-        <Grid size={6}>
+        <Grid 
+
+        className="grid grid-cols-1 md:grid-cols-2 gap-4"
+        >
           <Link href={text_content_hsl.link} target="_blank" rel="noopener">
             <Card variant="outlined">
               <CardText content={text_content_hsl} />
