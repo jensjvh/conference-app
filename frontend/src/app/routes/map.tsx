@@ -14,9 +14,10 @@ function ConferenceMap(props: MapProps) {
 
     useEffect(() => {
         if (props.floor !== undefined) {
-          setCurrentFloor(props.floor);
+            setCurrentFloor(props.floor);
         }
-      }, [props.floor]);
+    }, [props.floor]);
+
     const image_path: string = `/floor_${currentFloor}.png`;
 
     const FloorButton = (floor_n: number) => (
@@ -24,17 +25,28 @@ function ConferenceMap(props: MapProps) {
             color="primary"
             variant="outlined"
             onClick={() => setCurrentFloor(floor_n)}
-            sx={{ mb: 0.5 }}
+            sx={{
+                mb: 0.5,
+                backgroundColor: currentFloor === floor_n ? theme.palette.primary.main : 'transparent',
+                color: currentFloor === floor_n ? '#fff' : theme.palette.primary.main,
+                '&:hover': {
+                    backgroundColor: currentFloor === floor_n ? theme.palette.primary.dark : theme.palette.action.hover,
+                },
+            }}
         >
             Floor {floor_n}
         </Button>
     );
 
     return (
-        <Box sx={{ height: "100%" }}>
-            <Typography variant="h4" gutterBottom>
-                Conference Map
+        <Box sx={{ height: "100%", display: 'flex', flexDirection: 'column' }}>
+            <Typography
+            variant="h4"
+            sx={{ fontWeight: 'bold', pb: 2 }}
+            >
+            Conference Map
             </Typography>
+
             <Box sx={{
                 mb: 2,
                 display: "flex",
@@ -46,30 +58,41 @@ function ConferenceMap(props: MapProps) {
                 zIndex: 10,
                 backgroundColor: 'rgba(255, 255, 255, 0.9)',
                 padding: 1,
-                borderRadius: 1
+                borderRadius: 1,
             }}>
                 {FloorButton(1)}
                 {FloorButton(2)}
                 {FloorButton(3)}
                 {FloorButton(4)}
             </Box>
-            <Box sx={{
-                height: "calc(100vh - 500px)",
-                width: "100%",
-                overflow: "hidden"
-            }}>
-                <MapInteractionCSS>
-                <img 
-            src={image_path} 
-            alt={`Conference Map - Floor ${currentFloor}`}
-            style={{
-              maxWidth: "100%",
-              height: "auto",
-              display: "block"
-            }}
-          />
-                </MapInteractionCSS>
-            </Box>
+            <Box
+  sx={{
+    flexGrow: 1,
+    width: "100%",
+    overflow: "hidden",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    border: "2px solid #ccc",
+    borderRadius: 1,
+    padding: 1,
+    height: isMobile ? "60vh" : "calc(100vh - 300px)", 
+  }}
+>
+  <MapInteractionCSS key={currentFloor}>
+    <img
+      src={image_path}
+      alt={`Conference Map - Floor ${currentFloor}`}
+      style={{
+        width: isMobile ? "auto" : "100%",   
+        height: "100%",
+        objectFit: isMobile ? "cover" : "contain", 
+        display: "block",
+      }}
+    />
+  </MapInteractionCSS>
+</Box>
+
         </Box>
     );
 }

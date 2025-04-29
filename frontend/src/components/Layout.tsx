@@ -30,19 +30,14 @@ const Layout = () => {
           >
             <MenuIcon />
           </Button>
-          <Typography
-            variant="h6"
-            style={{ flexGrow: 1, color: theme.palette.secondary.main }}
-            align="left"
-          >
-            IEEE Services 2025
-          </Typography>
-          <Button 
-            color="secondary" 
-            onClick={() => navigate("/")}
-          >
-            Conference info
-          </Button>
+          <Button
+        color="secondary"
+        onClick={() => navigate('/')}
+        style={{ textTransform: 'none' }} 
+      >
+        IEEE Services 2025
+      </Button>
+
         </Toolbar>
       </AppBar>
 
@@ -59,7 +54,15 @@ const Layout = () => {
               setIsSidebarOpen(false);
             }}
           >
-            <ListItemText primary="Conference Info" />
+            <ListItemText primary="Home" />
+          </ListItemButton>
+          <ListItemButton
+            onClick={() => {
+              navigate("/schedule");
+              setIsSidebarOpen(false);
+            }}
+          >
+            <ListItemText primary="Schedule" />
           </ListItemButton>
           <ListItemButton
             onClick={() => {
@@ -69,6 +72,15 @@ const Layout = () => {
           >
             <ListItemText primary="Map" />
           </ListItemButton>
+          <ListItemButton
+            onClick={() => {
+              navigate("/links");
+              setIsSidebarOpen(false);
+            }}
+          >
+            <ListItemText primary="Visiting Helsinki" />
+          </ListItemButton>
+
         </List>
       </Drawer>
 
