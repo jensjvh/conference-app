@@ -55,11 +55,11 @@ const Layout = () => {
           </ListItemButton>
           <ListItemButton
             onClick={() => {
-              navigate("/schedule");
+              navigate("/program");
               setIsSidebarOpen(false);
             }}
           >
-            <ListItemText primary="Schedule" />
+            <ListItemText primary="Program" />
           </ListItemButton>
           <ListItemButton
             onClick={() => {

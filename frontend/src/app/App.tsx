@@ -11,11 +11,11 @@ function App() {
       <React.Fragment>
         <Typography variant="body1" component="p" className="mb-6">
           <Button
-            onClick={() => navigate("/schedule")}
+            onClick={() => navigate("/program")}
             variant="contained"
             size="large"
           >
-            Schedule
+            Program
           </Button>
         </Typography>
         <Typography variant="body1" component="p" className="mb-6">
