@@ -3,7 +3,6 @@ import { useNavigate, Outlet } from "react-router";
 import { 
   AppBar, 
   Toolbar, 
-  Typography, 
   Button,
   Drawer,
   List,
@@ -12,12 +11,10 @@ import {
   Container
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useTheme } from "@mui/material/styles";
 
 const Layout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const navigate = useNavigate();
-  const theme = useTheme();
 
   return (
     <div>
@@ -58,11 +55,11 @@ const Layout = () => {
           </ListItemButton>
           <ListItemButton
             onClick={() => {
-              navigate("/schedule");
+              navigate("/program");
               setIsSidebarOpen(false);
             }}
           >
-            <ListItemText primary="Schedule" />
+            <ListItemText primary="Program" />
           </ListItemButton>
           <ListItemButton
             onClick={() => {
