@@ -20,6 +20,15 @@ function App() {
         </Typography>
         <Typography variant="body1" component="p" className="mb-6">
           <Button
+            onClick={() => navigate("/breaks")}
+            variant="contained"
+            size="large"
+          >
+            Lunch & Coffee
+          </Button>
+        </Typography>
+        <Typography variant="body1" component="p" className="mb-6">
+          <Button
             onClick={() => navigate("/map")}
             variant="contained"
             size="large"

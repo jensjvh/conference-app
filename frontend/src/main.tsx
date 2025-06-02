@@ -6,7 +6,7 @@ import App from './app/App.tsx';
 import ConferenceMap from './app/routes/map.tsx';
 import UsefulLinks from './app/routes/links.tsx';
 import Program from './app/routes/program.tsx';
-import Schedule from './app/routes/lunch_coffee.tsx';
+import Breaks from './app/routes/lunch_coffee.tsx';
 import Layout from './components/Layout.tsx';
 import { ThemeProvider } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
@@ -34,7 +34,7 @@ ReactDOM.createRoot(root).render(
               <Route path="/map" element={<ConferenceMap floor={1} />} />
               <Route path="/links" element={<UsefulLinks />} />
               <Route path="/program" element={<Program />} />
-              <Route path="/schedule" element={<Schedule />} />
+              <Route path="/breaks" element={<Breaks />} />
             </Route>
           </Routes>
         </BrowserRouter>
