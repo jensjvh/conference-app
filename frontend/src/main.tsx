@@ -7,6 +7,8 @@ import ConferenceMap from './app/routes/map.tsx';
 import UsefulLinks from './app/routes/links.tsx';
 import Program from './app/routes/program.tsx';
 import Breaks from './app/routes/lunch_coffee.tsx';
+import PastConferenceData from './app/routes/past_conf_data.tsx';
+import LiveData from './app/routes/live_data.tsx';
 import Layout from './components/Layout.tsx';
 import { ThemeProvider } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
@@ -35,6 +37,8 @@ ReactDOM.createRoot(root).render(
               <Route path="/links" element={<UsefulLinks />} />
               <Route path="/program" element={<Program />} />
               <Route path="/breaks" element={<Breaks />} />
+              <Route path="/pastdata" element={<PastConferenceData />} />
+              <Route path="/livedata" element={<LiveData />} />
             </Route>
           </Routes>
         </BrowserRouter>
