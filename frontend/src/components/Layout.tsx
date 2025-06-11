@@ -85,6 +85,14 @@ const Layout = () => {
           >
             <ListItemText primary="Visiting Helsinki" />
           </ListItemButton>
+                 <ListItemButton
+            onClick={() => {
+              navigate("/peopleflow");
+              setIsSidebarOpen(false);
+            }}
+          >
+            <ListItemText primary="People Flow" />
+          </ListItemButton>
 
         </List>
       </Drawer>

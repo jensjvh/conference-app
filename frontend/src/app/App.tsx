@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import React from "react";
 import { Button, Box, Typography } from "@mui/material";
 import "./App.css";
+import 'leaflet/dist/leaflet.css';
 
 function App() {
   const navigate = useNavigate();
