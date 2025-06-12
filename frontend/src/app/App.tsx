@@ -53,9 +53,9 @@ function App() {
   };
 
   return (
-    <Box className="pb-8 bg-gray-200 min-h-screen">
+    <Box className="pb-8 min-h-screen" sx={{bgcolor: '#f9fafb'}}>
             <img
-          src="/img/tech.jpg"
+          src="/img/people.jpg"
           alt="Technology conference"
           style={{ maxWidth: "100%", height: "auto" }}
         />
