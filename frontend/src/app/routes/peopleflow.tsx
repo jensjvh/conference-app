@@ -1,4 +1,3 @@
-// imports
 import React, { useEffect, useState } from 'react';
 import {
   Box,
@@ -125,8 +124,8 @@ const TimelineFacts = () => {
         gap: 6,
       }}
     >
-      <Typography variant="h6" sx={{ fontWeight: 'bold', mt:4, mb: 0, textAlign: 'center' }}>
-            IEEE Timeline
+      <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 4, mb: 0, textAlign: 'center' }}>
+        IEEE Timeline
       </Typography>
       {[...data].reverse().map(({ year }) => (
         <Box key={year} sx={{ position: 'relative', pl: 4, borderLeft: '3px solid', borderColor: 'primary.main' }}>
@@ -158,14 +157,19 @@ const TimelineFacts = () => {
               p: 2,
               bgcolor: 'background.paper',
               borderRadius: 3,
-              boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)',
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)', 
               fontSize: 14,
               maxHeight: 220,
               overflowY: 'auto',
             }}
           >
             {factsMap[year]?.map((fact, i) => (
-              <Typography key={i} variant="body1" color="text.secondary" sx={{ mb: i !== factsMap[year].length - 1 ? 1 : 0 }}>
+              <Typography
+                key={i}
+                variant="body1"
+                color="text.secondary"
+                sx={{ mb: i !== factsMap[year].length - 1 ? 1 : 0 }}
+              >
                 • {fact}
               </Typography>
             ))}
@@ -225,7 +229,7 @@ const DataDashboard: React.FC = () => {
   return (
     <Box sx={{ p: 4, bgcolor: '#f9fafb', minHeight: '100vh' }}>
       <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 4, textAlign: 'center' }}>
-        People Flow 
+        People Flow
       </Typography>
 
       {/* Charts */}
@@ -243,7 +247,7 @@ const DataDashboard: React.FC = () => {
             maxWidth: '600px',
             width: '100%',
             borderRadius: 3,
-            boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)',
+            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)', 
             bgcolor: 'background.paper',
             p: 2,
           }}
@@ -270,7 +274,7 @@ const DataDashboard: React.FC = () => {
             maxWidth: '600px',
             width: '100%',
             borderRadius: 3,
-            boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)',
+            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)', 
             bgcolor: 'background.paper',
             p: 2,
           }}
@@ -301,17 +305,19 @@ const DataDashboard: React.FC = () => {
         <Box
           sx={{
             borderRadius: 3,
-            boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)',
+            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)', 
             bgcolor: 'background.paper',
             p: 2,
           }}
         >
-          <Typography
-            variant="h6"
-            sx={{ fontWeight: 'bold', mb: 2, textAlign: 'center' }}
-          >
-            Live HSL Bike Map
-          </Typography>
+         <Typography
+          variant="h6"
+          sx={{ fontWeight: 'bold', mb: 2, textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}
+        >
+          <img src="/img/bike-svgrepo-com.svg" alt="Bike" style={{ width: 28, height: 28 }} />
+          Live HSL Bike Map
+        </Typography>
+
           <Divider />
           <Box sx={{ height: isSmall ? 400 : 600, mt: 2, borderRadius: 3, overflow: 'hidden' }}>
             <MapContainer
