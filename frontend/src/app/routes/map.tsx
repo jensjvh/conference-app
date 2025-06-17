@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { MapInteractionCSS } from "react-map-interaction";
-import { Box, Button, Typography, useMediaQuery, Popover, Paper, IconButton } from "@mui/material";
+import { renderToStaticMarkup } from 'react-dom/server';
+import { MapContainer, ImageOverlay, Marker, Popup, useMap, Pane } from "react-leaflet";
+import L from "leaflet";
+import { Box, Button, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import CloseIcon from '@mui/icons-material/Close';
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import InfoIcon from '@mui/icons-material/Info';
@@ -10,6 +11,12 @@ import InfoIcon from '@mui/icons-material/Info';
 interface MapProps {
   floor?: number;
 }
+
+const iconMap = {
+  room: <MeetingRoomIcon style={{ color: '#E91E63', fontSize: 24 }} />,
+  food: <RestaurantIcon style={{ color: '#FF9800', fontSize: 24 }} />,
+  info: <InfoIcon style={{ color: '#2196F3', fontSize: 24 }} />,
+};
 
 interface Hotspot {
   id: string;
@@ -22,54 +29,101 @@ interface Hotspot {
   color?: string;
 }
 
-function ConferenceMap(props: MapProps) {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const [currentFloor, setCurrentFloor] = useState<number>(props.floor || 1);
-  const [activeHotspot, setActiveHotspot] = useState<Hotspot | null>(null);
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const [touchedHotspotId, setTouchedHotspotId] = useState<string | null>(null);
+const getLeafletIcon = (type: 'room' | 'food' | 'info') => {
+  const iconSvgString = renderToStaticMarkup(iconMap[type]);
+  return L.divIcon({
+    html: iconSvgString,
+    className: '',
+    iconSize: [24, 24],
+    iconAnchor: [12, 24],
+  });
+};
+
+const LegendControl = () => {
+  const map = useMap();
+
+  const legendIcons = {
+    room: renderToStaticMarkup(<MeetingRoomIcon style={{ color: '#E91E63', fontSize: 20 }} />),
+    food: renderToStaticMarkup(<RestaurantIcon style={{ color: '#FF9800', fontSize: 20 }} />),
+    info: renderToStaticMarkup(<InfoIcon style={{ color: '#2196F3', fontSize: 20 }} />),
+  };
 
   useEffect(() => {
-    if (props.floor !== undefined) {
-      setCurrentFloor(props.floor);
-    }
-  }, [props.floor]);
+    const legend = L.control({ position: "bottomright" });
 
-  const handleHotspotClick = (event: React.MouseEvent<HTMLDivElement>, hotspot: Hotspot) => {
-    setAnchorEl(event.currentTarget);
-    setActiveHotspot(hotspot);
-  };
+    legend.onAdd = function () {
+      const div = L.DomUtil.create("div", "info legend");
+      div.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
+      div.style.padding = "10px";
+      div.style.borderRadius = "5px";
+      div.style.fontSize = "14px";
 
-  const handleClose = () => {
-    setAnchorEl(null);
-    setActiveHotspot(null);
-  };
+      div.innerHTML = `
+        <strong>Map Legend</strong><br />
+        <div style="display:flex; align-items:center; margin-top:5px;">
+          <span style="margin-right:8px; display:flex; align-items:center;">${legendIcons.room}</span>
+          Conference Rooms
+        </div>
+        <div style="display:flex; align-items:center; margin-top:5px;">
+          <span style="margin-right:8px; display:flex; align-items:center;">${legendIcons.food}</span>
+          Food
+        </div>
+        <div style="display:flex; align-items:center; margin-top:5px;">
+          <span style="margin-right:8px; display:flex; align-items:center;">${legendIcons.info}</span>
+          Information
+        </div>
+      `;
 
-  const open = Boolean(anchorEl);
+      return div;
+    };
 
-  const image_path: string = `/floor_${currentFloor}.png`;
+    legend.addTo(map);
+
+    return () => {
+      legend.remove();
+    };
+  }, [map, legendIcons]);
+
+  return null;
+};
+
+
+function ConferenceMap({ floor = 1 }: MapProps) {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [currentFloor, setCurrentFloor] = useState(floor);
+
+  useEffect(() => {
+    setCurrentFloor(floor);
+  }, [floor]);
+
+  const imageWidth = 1200;
+  const imageHeight = 800;
+  const bounds: L.LatLngBoundsExpression = [
+    [0, 0],
+    [imageHeight, imageWidth],
+  ];
 
   const hotspots: Hotspot[] = [
     {
       id: "main-hall",
       x: 50,
-      y: 70,
+      y: 27.7,
       floor: 1,
       title: "Entrance Hall",
       description: "",
-      icon: 'room',
-      color: "#E91E63"
+      icon: "room",
+      color: "#E91E63",
     },
     {
       id: "registration",
       x: 45,
-      y: 70,
+      y: 27.7,
       floor: 1,
       title: "Registration Desk",
       description: "",
-      icon: 'info',
-      color: "#2196F3"
+      icon: "info",
+      color: "#2196F3",
     },
     {
       id: "cafeteria",
@@ -78,8 +132,8 @@ function ConferenceMap(props: MapProps) {
       floor: 1,
       title: "Cafeteria",
       description: "Coffee breaks and lunch",
-      icon: 'food',
-      color: "#FF9800"
+      icon: "food",
+      color: "#FF9800",
     },
     {
       id: "room-a",
@@ -88,8 +142,8 @@ function ConferenceMap(props: MapProps) {
       floor: 2,
       title: "Room A",
       description: "",
-      icon: 'room',
-      color: "#4CAF50"
+      icon: "room",
+      color: "#4CAF50",
     },
     {
       id: "room-b",
@@ -98,267 +152,100 @@ function ConferenceMap(props: MapProps) {
       floor: 2,
       title: "Room B",
       description: "",
-      icon: 'room',
-      color: "#9C27B0"
+      icon: "room",
+      color: "#9C27B0",
     },
   ];
 
-  const FloorButton = (floor_n: number) => (
-    <Button
-      color="primary"
-      variant="outlined"
-      onClick={() => setCurrentFloor(floor_n)}
-      sx={{
-        mb: 0.5,
-        backgroundColor: currentFloor === floor_n ? theme.palette.primary.main : 'transparent',
-        color: currentFloor === floor_n ? '#fff' : theme.palette.primary.main,
-        '&:hover': {
-          backgroundColor: currentFloor === floor_n ? theme.palette.primary.dark : theme.palette.action.hover,
-        },
-      }}
-    >
-      Floor {floor_n}
-    </Button>
-  );
-
-  const getHotspotIcon = (type: string) => {
-  switch (type) {
-    case 'room': return <MeetingRoomIcon />;
-    case 'food': return <RestaurantIcon />;
-    case 'info': return <InfoIcon />;
-    default: return <InfoIcon />;
-  }
-};
+  const toLatLng = (xPercent: number, yPercent: number): [number, number] => {
+    const lat = (yPercent / 100) * imageHeight;
+    const lng = (xPercent / 100) * imageWidth;
+    return [lat, lng];
+  };
 
   return (
-    <Box sx={{ height: "100%", display: 'flex', flexDirection: 'column' }}>
-      <Typography
-        variant="h4"
-        component="h1"
-        sx={{ fontWeight: 'bold', pb: 2 }}
-      >
+    <Box sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
+      <Typography variant="h4" component="h1" sx={{ fontWeight: "bold", pb: 2 }}>
         Conference Map
       </Typography>
 
-      <Box sx={{
-        mb: 2,
-        display: "flex",
-        justifyContent: "center",
-        flexWrap: "wrap",
-        gap: 1,
-        position: "center",
-        top: isMobile ? 70 : 80,
-        zIndex: 10,
-        backgroundColor: 'rgba(255, 255, 255, 0.9)',
-        padding: 1,
-        borderRadius: 1,
-      }}>
-        {FloorButton(1)}
-        {FloorButton(2)}
-        {FloorButton(3)}
-        {FloorButton(4)}
+      <Box
+        sx={{
+          mb: 2,
+          display: "flex",
+          justifyContent: "center",
+          flexWrap: "wrap",
+          gap: 1,
+          backgroundColor: "rgba(255, 255, 255, 0.9)",
+          padding: 1,
+          borderRadius: 1,
+        }}
+      >
+        {[1, 2, 3, 4].map((floor_n) => (
+          <Button
+            key={floor_n}
+            color="primary"
+            variant="outlined"
+            onClick={() => setCurrentFloor(floor_n)}
+            sx={{
+              mb: 0.5,
+              backgroundColor: currentFloor === floor_n ? theme.palette.primary.main : "transparent",
+              color: currentFloor === floor_n ? "#fff" : theme.palette.primary.main,
+              "&:hover": {
+                backgroundColor:
+                  currentFloor === floor_n ? theme.palette.primary.dark : theme.palette.action.hover,
+              },
+            }}
+          >
+            Floor {floor_n}
+          </Button>
+        ))}
       </Box>
 
       <Box
         sx={{
           flexGrow: 1,
           width: "100%",
-          overflow: "hidden",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
           border: "2px solid #ccc",
           borderRadius: 1,
-          padding: 1,
-          height: isMobile ? "60vh" : "calc(100vh - 300px)",
-          position: "relative"
+          overflow: "hidden",
+          height: isMobile ? "60vh" : "calc(100vh - 200px)",
         }}
       >
-        <MapInteractionCSS key={currentFloor}>
-          <Box sx={{ position: 'relative' }}>
-            <img
-              src={image_path}
-              alt={`Conference Map - Floor ${currentFloor}`}
-              style={{
-                width: isMobile ? "auto" : "100%",
-                height: "100%",
-                objectFit: isMobile ? "cover" : "contain",
-                display: "block",
-              }}
-            />
-            {hotspots
-              .filter(hotspot => hotspot.floor === currentFloor)
-              .map(hotspot => (
-                <Box
-                  key={hotspot.id}
-                  onClick={(e) => handleHotspotClick(e, hotspot)}
-                  onTouchStart={() => setTouchedHotspotId(hotspot.id)}
-                  onTouchEnd={() => setTouchedHotspotId(null)}
-                  sx={{
-                    position: 'absolute',
-                    left: `${hotspot.x}%`,
-                    top: `${hotspot.y}%`,
-                    width: isMobile ? 12 : 36,
-                    height: isMobile ? 12 : 36,
-                    borderRadius: '50%',
-                    color: 'white',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'pointer',
-                    boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
-                    zIndex: 5,
-                    transition: 'transform 0.2s, box-shadow 0.2s',
-                    backgroundColor: touchedHotspotId === hotspot.id ?
-                      theme.palette.primary.dark :
-                      hotspot.color || theme.palette.primary.main,
-                    transform: touchedHotspotId === hotspot.id ?
-                      'translate(-50%, -50%) scale(1.2)' :
-                      'translate(-50%, -50%)',
-                    '&:hover': {
-                      transform: 'translate(-50%, -50%) scale(1.1)',
-                      boxShadow: '0 4px 10px rgba(0,0,0,0.4)',
-                    },
-                  }}
-                  aria-describedby={`popover-${hotspot.id}`}
-                >
-                  {/* Smaller icons on mobile */}
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      '& svg': {
-                        fontSize: isMobile ? '10px' : '20px',
-                        width: isMobile ? '10px' : '20px',
-                        height: isMobile ? '10px' : '20px',
-                      }
-                    }}
-                  >
-                    {getHotspotIcon(hotspot.icon)}
-                  </Box>
-                </Box>
-              ))}
-          </Box>
-        </MapInteractionCSS>
-      </Box>
-      {isMobile && (
-        <Box
-          sx={{
-            mt: 2,
-            p: 2,
-            bgcolor: 'rgba(255,255,255,0.9)',
-            borderRadius: 1,
-            boxShadow: '0 1px 3px rgba(0,0,0,0.12)'
-          }}
+        <MapContainer
+          crs={L.CRS.Simple}
+          bounds={bounds}
+          scrollWheelZoom={false}
+          style={{ height: "100%", width: "100%" }}
+          key={currentFloor} // reset map when floor changes
         >
-          <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'bold' }}>
-            Map Legend:
-          </Typography>
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Box
-                sx={{
-                  bgcolor: '#E91E63',
-                  width: 24,
-                  height: 24,
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  mr: 1,
-                  color: 'white'
-                }}
-              >
-                <MeetingRoomIcon fontSize="small" />
-              </Box>
-              <Typography variant="body2">Conference Rooms</Typography>
-            </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Box
-                sx={{
-                  bgcolor: '#FF9800',
-                  width: 24,
-                  height: 24,
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  mr: 1,
-                  color: 'white'
-                }}
-              >
-                <RestaurantIcon fontSize="small" />
-              </Box>
-              <Typography variant="body2">Food</Typography>
-            </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Box
-                sx={{
-                  bgcolor: '#2196F3',
-                  width: 24,
-                  height: 24,
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  mr: 1,
-                  color: 'white'
-                }}
-              >
-                <InfoIcon fontSize="small" />
-              </Box>
-              <Typography variant="body2">Information</Typography>
-            </Box>
-          </Box>
-        </Box>
-      )}
-      <Popover
-        id={activeHotspot ? `popover-${activeHotspot.id}` : undefined}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: isMobile ? 'bottom' : 'top',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: isMobile ? 'top' : 'bottom',
-          horizontal: 'center',
-        }}
-        sx={{
-          '& .MuiPaper-root': {
-            maxWidth: isMobile ? '85vw' : 300,
-            minWidth: isMobile ? '85vw' : 'auto',
-            boxShadow: isMobile ? '0px 5px 15px rgba(0,0,0,0.2)' : undefined,
-          }
-        }}
-      >
-        {activeHotspot && (
-          <Paper sx={{ p: 2, position: 'relative' }}>
-            <IconButton
-              aria-label="close"
-              onClick={handleClose}
-              sx={{
-                position: 'absolute',
-                right: 8,
-                top: 8,
-                color: theme.palette.grey[500],
-              }}
-            >
-              <CloseIcon />
-            </IconButton>
+          <ImageOverlay url={`/floor_${currentFloor}.png`} bounds={bounds} />
 
-            <Typography variant="h6" component="h3" sx={{ pr: 4, color: activeHotspot.color }}>
-              {activeHotspot.title}
-            </Typography>
+          <Pane name="markers" style={{ zIndex: 600 }}>
+            {hotspots
+              .filter((h) => h.floor === currentFloor)
+              .map((hotspot) => {
+                const position = toLatLng(hotspot.x, hotspot.y);
+                return (
+                  <Marker
+                    key={hotspot.id}
+                    position={position}
+                    icon={getLeafletIcon(hotspot.icon)}
+                  >
+                    <Popup>
+                      <Typography variant="h6" sx={{ color: hotspot.color, fontWeight: "bold" }}>
+                        {hotspot.title}
+                      </Typography>
+                      <Typography variant="body2">{hotspot.description}</Typography>
+                    </Popup>
+                  </Marker>
+                );
+              })}
+          </Pane>
 
-            <Typography variant="body2" sx={{ mt: 1 }}>
-              {activeHotspot.description}
-            </Typography>
-          </Paper>
-        )}
-      </Popover>
+          <LegendControl />
+        </MapContainer>
+      </Box>
     </Box>
   );
 }
