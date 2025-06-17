@@ -49,7 +49,7 @@ const LegendControl = () => {
   };
 
   useEffect(() => {
-    const legend = L.control({ position: "bottomright" });
+    const legend = L.control.attribution({ position: "bottomright" });
 
     legend.onAdd = function () {
       const div = L.DomUtil.create("div", "info legend");
