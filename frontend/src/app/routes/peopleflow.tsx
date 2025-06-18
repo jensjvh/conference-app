@@ -36,7 +36,6 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
-// Data
 const data = [
   { year: 2018, conferences: 1966, attendees: 561000, countries: 103 },
   { year: 2019, conferences: 1969, attendees: 547000, countries: 103 },
@@ -55,7 +54,6 @@ const factsMap: Record<number, string[]> = {
   2018: ['1,966 Conferences in 103 countries', '561,000+ Attendees'],
 };
 
-// Line Chart
 const LineChartComponent = ({
   label,
   dataPoints,
@@ -106,7 +104,6 @@ const LineChartComponent = ({
   );
 };
 
-// Timeline Facts
 const TimelineFacts = () => {
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
@@ -157,7 +154,7 @@ const TimelineFacts = () => {
               p: 2,
               bgcolor: 'background.paper',
               borderRadius: 3,
-              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)', 
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)',
               fontSize: 14,
               maxHeight: 220,
               overflowY: 'auto',
@@ -180,7 +177,6 @@ const TimelineFacts = () => {
   );
 };
 
-// Main Component
 const DataDashboard: React.FC = () => {
   const [stations, setStations] = useState<any[]>([]);
   const theme = useTheme();
@@ -192,25 +188,23 @@ const DataDashboard: React.FC = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          query: `
-            {
-              vehicleRentalStations {
-                stationId
-                name
-                lat
-                lon
-                allowPickup
-                availableVehicles {
-                  byType {
-                    count
-                    vehicleType {
-                      formFactor
-                    }
+          query: `{
+            vehicleRentalStations {
+              stationId
+              name
+              lat
+              lon
+              allowPickup
+              availableVehicles {
+                byType {
+                  count
+                  vehicleType {
+                    formFactor
                   }
                 }
               }
             }
-          `
+          }`
         })
       })
         .then((res) => res.json())
@@ -232,7 +226,6 @@ const DataDashboard: React.FC = () => {
         People Flow
       </Typography>
 
-      {/* Charts */}
       <Box
         sx={{
           display: 'flex',
@@ -241,21 +234,19 @@ const DataDashboard: React.FC = () => {
           justifyContent: 'center',
         }}
       >
+
         <Box
           sx={{
             flex: '1 1 500px',
             maxWidth: '600px',
             width: '100%',
             borderRadius: 3,
-            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)', 
+            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)',
             bgcolor: 'background.paper',
             p: 2,
           }}
         >
-          <Typography
-            variant="h6"
-            sx={{ fontWeight: 'bold', mb: 2, textAlign: 'center' }}
-          >
+          <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2, textAlign: 'center' }}>
             IEEE Conferences Over Time
           </Typography>
           <Divider />
@@ -274,15 +265,12 @@ const DataDashboard: React.FC = () => {
             maxWidth: '600px',
             width: '100%',
             borderRadius: 3,
-            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)', 
+            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)',
             bgcolor: 'background.paper',
             p: 2,
           }}
         >
-          <Typography
-            variant="h6"
-            sx={{ fontWeight: 'bold', mb: 2, textAlign: 'center' }}
-          >
+          <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2, textAlign: 'center' }}>
             IEEE Conference Attendees Over Time
           </Typography>
           <Divider />
@@ -300,57 +288,102 @@ const DataDashboard: React.FC = () => {
         Source: IEEE Annual Reports
       </Typography>
 
-      {/* Map */}
-      <Box sx={{ mt: 6 }}>
-        <Box
-          sx={{
-            borderRadius: 3,
-            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)', 
-            bgcolor: 'background.paper',
-            p: 2,
-          }}
-        >
-         <Typography
+      <Box sx={{ mt: 8 }}>
+        <Typography
           variant="h6"
-          sx={{ fontWeight: 'bold', mb: 2, textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}
+          sx={{
+            fontWeight: 'bold',
+            mb: 3,
+            textAlign: 'center',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 1,
+          }}
         >
           <img src="/img/bike-svgrepo-com.svg" alt="Bike" style={{ width: 28, height: 28 }} />
           Live HSL Bike Map
         </Typography>
 
-          <Divider />
-          <Box sx={{ height: isSmall ? 400 : 600, mt: 2, borderRadius: 3, overflow: 'hidden' }}>
-            <MapContainer
-              center={[60.171, 24.951]}
-              zoom={15}
-              style={{ height: '100%', width: '100%' }}
-            >
-              <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution="&copy; OpenStreetMap contributors"
-              />
-              {stations.map((station) => (
-                <Marker key={station.stationId} position={[station.lat, station.lon]}>
-                  <Popup>
-                    <strong>{station.name}</strong>
-                    <br />
-                    {station.allowPickup ? 'Pickup allowed' : 'Pickup not allowed'}
-                    <ul>
-                      {station.availableVehicles.byType.map((vehicle, idx) => (
-                        <li key={idx}>
-                          {vehicle.count} {vehicle.vehicleType.formFactor.toLowerCase()}(s)
-                        </li>
-                      ))}
-                    </ul>
-                  </Popup>
-                </Marker>
-              ))}
-            </MapContainer>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: isSmall ? 'column' : 'row',
+            gap: 4,
+            justifyContent: 'center',
+            alignItems: 'stretch',
+          }}
+        >
+          {/* Map */}
+          <Box
+            sx={{
+              flex: 1.3,
+              minWidth: 300,
+              borderRadius: 3,
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)',
+              bgcolor: 'background.paper',
+              p: 2,
+            }}
+          >
+            <Box sx={{ height: 400, mt: 0, borderRadius: 3, overflow: 'hidden' }}>
+              <MapContainer center={[60.171, 24.951]} zoom={15} style={{ height: '100%', width: '100%' }}>
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution="&copy; OpenStreetMap contributors"
+                />
+                {stations.map((station) => (
+                  <Marker key={station.stationId} position={[station.lat, station.lon]}>
+                    <Popup>
+                      <strong>{station.name}</strong>
+                      <br />
+                      {station.allowPickup ? 'Pickup allowed' : 'Pickup not allowed'}
+                      <ul>
+                        {station.availableVehicles.byType.map((vehicle, idx) => (
+                          <li key={idx}>
+                            {vehicle.count} {vehicle.vehicleType.formFactor.toLowerCase()}(s)
+                          </li>
+                        ))}
+                      </ul>
+                    </Popup>
+                  </Marker>
+                ))}
+              </MapContainer>
+            </Box>
+          </Box>
+ 
+          <Box
+            sx={{
+              flex: 1,
+              minWidth: 300,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 2,
+              bgcolor: 'background.paper',
+              borderRadius: 3,
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)',
+              p: 2,
+            }}
+          >
+            <Box
+              component="img"
+              src="/img/Bikes.jpg"
+              alt="Bikes"
+              sx={{
+                width: '100%',
+                height: 400,
+                objectFit: 'cover',
+                borderRadius: 2,
+              }}
+            />
+            <Typography variant="subtitle1" sx={{ fontStyle: 'italic', textAlign: 'center' }}>
+              HSL offers bikes for sustainable travel
+            </Typography>
           </Box>
         </Box>
       </Box>
 
-      {/* Timeline */}
       <TimelineFacts />
 
       <Typography sx={{ mt: 4, textAlign: 'center' }} variant="caption">
