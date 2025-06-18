@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
 import React from "react";
-import { Button, Box, Typography } from "@mui/material";
+import { Button, Box, Typography, Link } from "@mui/material";
 import "./App.css";
-import 'leaflet/dist/leaflet.css';
+import "leaflet/dist/leaflet.css";
 
 function App() {
   const navigate = useNavigate();
@@ -38,35 +38,49 @@ function App() {
           </Button>
         </Typography>
         <Typography variant="body1" component="p" className="mb-6">
-        <Button
-        onClick={() => navigate("/links")}
-        variant="contained"
-        size="large"
-        >
-        Visiting Helsinki
-      </Button>
-
-
+          <Button
+            onClick={() => navigate("/links")}
+            variant="contained"
+            size="large"
+          >
+            Visiting Helsinki
+          </Button>
         </Typography>
       </React.Fragment>
     );
   };
 
   return (
-    <Box className="pb-8 min-h-screen" sx={{bgcolor: '#f9fafb'}}>
-            <img
-          src="/img/people.jpg"
-          alt="Technology conference"
-          style={{ maxWidth: "100%", height: "auto" }}
-        />
-      <Typography
-            variant="h3"
-            sx={{ fontWeight: 'bold', pt: 4 }}
-            >
+    <Box className="pb-8 min-h-screen" sx={{ bgcolor: "#f9fafb" }}>
+      <img
+        src="img/people.jpg"
+        alt="Technology conference"
+        style={{ maxWidth: "100%", height: "auto" }}
+      />
+      <Typography variant="h3" sx={{ fontWeight: "bold", pt: 4 }}>
         IEEE Services 2025
       </Typography>
       <Box className="pt-8 pb-8 mb-8 flex flex-col gap-6 sm:flex-row sm:justify-center">
         {ConferenceButtons()}
+      </Box>
+      <Box
+        className="p-8 bg-white"
+        sx={{ border: 5, borderColor: "lightblue" }}
+      >
+        <Typography
+          variant="body1"
+          component="p"
+          className="text-lg mb-6 leading-relaxed"
+          sx={{
+            fontSize: "1.5rem",
+            fontWeight: "bold",
+          }}
+        >
+          Tuesday-Friday: Complimentary access to{" "}
+          <Link href="https://www.helsinki.fi/en/helsinki-university-museum-flame/helsinki-university-museum-flame-exhibition-centre">
+            Helsinki University Museum Flame exhibition centre
+          </Link>
+        </Typography>
       </Box>
       <Box className="p-8 bg-white">
         <Typography
@@ -151,7 +165,7 @@ function App() {
           SERVICES 2025 is the only premier professional event for the services
           computing field offered by IEEE.
         </Typography>
-        </Box>
+      </Box>
     </Box>
   );
 }

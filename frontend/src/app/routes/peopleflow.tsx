@@ -1,20 +1,15 @@
 // imports
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Typography,
   useTheme,
   useMediaQuery,
   Divider,
-} from '@mui/material';
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup
-} from 'react-leaflet';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+} from "@mui/material";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -25,16 +20,28 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
-  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+  iconRetinaUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
+  iconUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
+  shadowUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
 // Data
@@ -48,12 +55,28 @@ const data = [
 ];
 
 const factsMap: Record<number, string[]> = {
-  2023: ['2,121 Conferences', '562,030 Conference Attendees', 'CRA Sets Attendance Record with 6,000 participants'],
-  2022: ['2,008 Conferences in 106 countries', '534,000 Attendees - returned to pre-pandemic levels', 'Increase in number of conferences'],
-  2021: ['1,899 Conferences in 102 countries', '572,000 Attendees (virtual & in-person)', 'Hybrid conferences increased'],
-  2020: ['1,611 Conferences in 96 countries', '465,000+ Attendees (virtual & in-person)', 'Pivot to virtual conferences due to COVID-19'],
-  2019: ['1,969 Conferences in 103 countries', '547,000 Attendees'],
-  2018: ['1,966 Conferences in 103 countries', '561,000+ Attendees'],
+  2023: [
+    "2,121 Conferences",
+    "562,030 Conference Attendees",
+    "CRA Sets Attendance Record with 6,000 participants",
+  ],
+  2022: [
+    "2,008 Conferences in 106 countries",
+    "534,000 Attendees - returned to pre-pandemic levels",
+    "Increase in number of conferences",
+  ],
+  2021: [
+    "1,899 Conferences in 102 countries",
+    "572,000 Attendees (virtual & in-person)",
+    "Hybrid conferences increased",
+  ],
+  2020: [
+    "1,611 Conferences in 96 countries",
+    "465,000+ Attendees (virtual & in-person)",
+    "Pivot to virtual conferences due to COVID-19",
+  ],
+  2019: ["1,969 Conferences in 103 countries", "547,000 Attendees"],
+  2018: ["1,966 Conferences in 103 countries", "561,000+ Attendees"],
 };
 
 // Line Chart
@@ -67,7 +90,7 @@ const LineChartComponent = ({
   borderColor: string;
 }) => {
   return (
-    <Box sx={{ width: '100%', height: 300 }}>
+    <Box sx={{ width: "100%", height: 300 }}>
       <Line
         data={{
           labels: data.map((d) => d.year.toString()),
@@ -92,12 +115,18 @@ const LineChartComponent = ({
             y: {
               beginAtZero: true,
               ticks: {
-                callback: (value: number) =>
-                  value >= 1_000_000
-                    ? (value / 1_000_000).toFixed(1) + 'M'
+                callback: function (tickValue: string | number) {
+                  const value =
+                    typeof tickValue === "number"
+                      ? tickValue
+                      : parseFloat(tickValue);
+                  if (isNaN(value)) return tickValue;
+                  return value >= 1_000_000
+                    ? (value / 1_000_000).toFixed(1) + "M"
                     : value >= 1_000
-                    ? (value / 1_000).toFixed(0) + 'k'
-                    : value.toString(),
+                      ? (value / 1_000).toFixed(0) + "k"
+                      : value.toString();
+                },
               },
             },
           },
@@ -110,42 +139,53 @@ const LineChartComponent = ({
 // Timeline Facts
 const TimelineFacts = () => {
   const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
+  const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Box
       sx={{
         mt: 8,
         px: isSmall ? 2 : 6,
-        width: '100%',
+        width: "100%",
         maxWidth: 600,
-        mx: 'auto',
-        display: 'flex',
-        flexDirection: 'column',
+        mx: "auto",
+        display: "flex",
+        flexDirection: "column",
         gap: 6,
       }}
     >
-      <Typography variant="h6" sx={{ fontWeight: 'bold', mt:4, mb: 0, textAlign: 'center' }}>
-            IEEE Timeline
+      <Typography
+        variant="h6"
+        sx={{ fontWeight: "bold", mt: 4, mb: 0, textAlign: "center" }}
+      >
+        IEEE Timeline
       </Typography>
       {[...data].reverse().map(({ year }) => (
-        <Box key={year} sx={{ position: 'relative', pl: 4, borderLeft: '3px solid', borderColor: 'primary.main' }}>
+        <Box
+          key={year}
+          sx={{
+            position: "relative",
+            pl: 4,
+            borderLeft: "3px solid",
+            borderColor: "primary.main",
+          }}
+        >
           <Box
             sx={{
-              position: 'absolute',
-              left: '-28px',
+              position: "absolute",
+              left: "-28px",
               top: 0,
               width: 56,
               height: 56,
-              bgcolor: 'primary.main',
-              color: 'white',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontWeight: 'bold',
+              bgcolor: "primary.main",
+              color: "white",
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontWeight: "bold",
               fontSize: 18,
-              cursor: 'pointer',
+              cursor: "pointer",
             }}
             title={`Year ${year}`}
           >
@@ -156,16 +196,21 @@ const TimelineFacts = () => {
               mt: 1,
               ml: 4,
               p: 2,
-              bgcolor: 'background.paper',
+              bgcolor: "background.paper",
               borderRadius: 3,
-              boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)',
+              boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.1)",
               fontSize: 14,
               maxHeight: 220,
-              overflowY: 'auto',
+              overflowY: "auto",
             }}
           >
             {factsMap[year]?.map((fact, i) => (
-              <Typography key={i} variant="body1" color="text.secondary" sx={{ mb: i !== factsMap[year].length - 1 ? 1 : 0 }}>
+              <Typography
+                key={i}
+                variant="body1"
+                color="text.secondary"
+                sx={{ mb: i !== factsMap[year].length - 1 ? 1 : 0 }}
+              >
                 • {fact}
               </Typography>
             ))}
@@ -176,17 +221,31 @@ const TimelineFacts = () => {
   );
 };
 
+interface VehicleType {
+  formFactor: string;
+}
+
+interface Vehicle {
+  count: number;
+  vehicleType: VehicleType;
+}
+
+const backend_url =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3001/graphql-proxy"
+    : "/api/graphql-proxy";
+
 // Main Component
 const DataDashboard: React.FC = () => {
   const [stations, setStations] = useState<any[]>([]);
   const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down('md'));
+  const isSmall = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {
     const fetchStations = () => {
-      fetch('http://localhost:3001/graphql-proxy', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      fetch(backend_url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           query: `
             {
@@ -206,15 +265,16 @@ const DataDashboard: React.FC = () => {
                 }
               }
             }
-          `
-        })
+          `,
+        }),
       })
         .then((res) => res.json())
         .then((data) => {
-          if (data.errors) throw new Error(data.errors.map((e: any) => e.message).join(', '));
+          if (data.errors)
+            throw new Error(data.errors.map((e: any) => e.message).join(", "));
           setStations(data.data.vehicleRentalStations);
         })
-        .catch((err) => console.error('Error fetching stations:', err));
+        .catch((err) => console.error("Error fetching stations:", err));
     };
 
     fetchStations();
@@ -223,34 +283,37 @@ const DataDashboard: React.FC = () => {
   }, []);
 
   return (
-    <Box sx={{ p: 4, bgcolor: '#f9fafb', minHeight: '100vh' }}>
-      <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 4, textAlign: 'center' }}>
-        People Flow 
+    <Box sx={{ p: 4, bgcolor: "#f9fafb", minHeight: "100vh" }}>
+      <Typography
+        variant="h4"
+        sx={{ fontWeight: "bold", mb: 4, textAlign: "center" }}
+      >
+        People Flow
       </Typography>
 
       {/* Charts */}
       <Box
         sx={{
-          display: 'flex',
+          display: "flex",
           gap: 4,
-          flexWrap: 'wrap',
-          justifyContent: 'center',
+          flexWrap: "wrap",
+          justifyContent: "center",
         }}
       >
         <Box
           sx={{
-            flex: '1 1 500px',
-            maxWidth: '600px',
-            width: '100%',
+            flex: "1 1 500px",
+            maxWidth: "600px",
+            width: "100%",
             borderRadius: 3,
-            boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)',
-            bgcolor: 'background.paper',
+            boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.1)",
+            bgcolor: "background.paper",
             p: 2,
           }}
         >
           <Typography
             variant="h6"
-            sx={{ fontWeight: 'bold', mb: 2, textAlign: 'center' }}
+            sx={{ fontWeight: "bold", mb: 2, textAlign: "center" }}
           >
             IEEE Conferences Over Time
           </Typography>
@@ -266,18 +329,18 @@ const DataDashboard: React.FC = () => {
 
         <Box
           sx={{
-            flex: '1 1 500px',
-            maxWidth: '600px',
-            width: '100%',
+            flex: "1 1 500px",
+            maxWidth: "600px",
+            width: "100%",
             borderRadius: 3,
-            boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)',
-            bgcolor: 'background.paper',
+            boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.1)",
+            bgcolor: "background.paper",
             p: 2,
           }}
         >
           <Typography
             variant="h6"
-            sx={{ fontWeight: 'bold', mb: 2, textAlign: 'center' }}
+            sx={{ fontWeight: "bold", mb: 2, textAlign: "center" }}
           >
             IEEE Conference Attendees Over Time
           </Typography>
@@ -292,7 +355,7 @@ const DataDashboard: React.FC = () => {
         </Box>
       </Box>
 
-      <Typography sx={{ mt: 4, textAlign: 'center' }} variant="caption">
+      <Typography sx={{ mt: 4, textAlign: "center" }} variant="caption">
         Source: IEEE Annual Reports
       </Typography>
 
@@ -301,40 +364,55 @@ const DataDashboard: React.FC = () => {
         <Box
           sx={{
             borderRadius: 3,
-            boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)',
-            bgcolor: 'background.paper',
+            boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.1)",
+            bgcolor: "background.paper",
             p: 2,
           }}
         >
           <Typography
             variant="h6"
-            sx={{ fontWeight: 'bold', mb: 2, textAlign: 'center' }}
+            sx={{ fontWeight: "bold", mb: 2, textAlign: "center" }}
           >
             Live HSL Bike Map
           </Typography>
           <Divider />
-          <Box sx={{ height: isSmall ? 400 : 600, mt: 2, borderRadius: 3, overflow: 'hidden' }}>
+          <Box
+            sx={{
+              height: isSmall ? 400 : 600,
+              mt: 2,
+              borderRadius: 3,
+              overflow: "hidden",
+            }}
+          >
             <MapContainer
               center={[60.171, 24.951]}
               zoom={15}
-              style={{ height: '100%', width: '100%' }}
+              style={{ height: "100%", width: "100%" }}
             >
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution="&copy; OpenStreetMap contributors"
               />
               {stations.map((station) => (
-                <Marker key={station.stationId} position={[station.lat, station.lon]}>
+                <Marker
+                  key={station.stationId}
+                  position={[station.lat, station.lon]}
+                >
                   <Popup>
                     <strong>{station.name}</strong>
                     <br />
-                    {station.allowPickup ? 'Pickup allowed' : 'Pickup not allowed'}
+                    {station.allowPickup
+                      ? "Pickup allowed"
+                      : "Pickup not allowed"}
                     <ul>
-                      {station.availableVehicles.byType.map((vehicle, idx) => (
-                        <li key={idx}>
-                          {vehicle.count} {vehicle.vehicleType.formFactor.toLowerCase()}(s)
-                        </li>
-                      ))}
+                      {station.availableVehicles.byType.map(
+                        (vehicle: Vehicle, idx: number) => (
+                          <li key={idx}>
+                            {vehicle.count}{" "}
+                            {vehicle.vehicleType.formFactor.toLowerCase()}(s)
+                          </li>
+                        )
+                      )}
                     </ul>
                   </Popup>
                 </Marker>
@@ -347,7 +425,7 @@ const DataDashboard: React.FC = () => {
       {/* Timeline */}
       <TimelineFacts />
 
-      <Typography sx={{ mt: 4, textAlign: 'center' }} variant="caption">
+      <Typography sx={{ mt: 4, textAlign: "center" }} variant="caption">
         Source: IEEE Annual Reports
       </Typography>
     </Box>

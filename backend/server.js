@@ -3,7 +3,7 @@ const fetch = require('node-fetch')
 const cors = require('cors')
 
 const app = express()
-const PORT = 3001
+const PORT = 5000
 
 const SUBSCRIPTION_KEY = '61cdbecfc1444cf5aee10a2555f87d53'
 const DIGITRANSIT_API_URL = 'https://api.digitransit.fi/routing/v2/hsl/gtfs/v1'
@@ -38,6 +38,6 @@ app.post('/graphql-proxy', async (req, res) => {
   }
 })
 
-app.listen(PORT, () => {
-  console.log(`Proxy server running on http://localhost:${PORT}`)
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Proxy server running on http://0.0.0.0:${PORT}`)
 })
