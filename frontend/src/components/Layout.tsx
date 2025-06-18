@@ -71,6 +71,14 @@ const Layout = () => {
           </ListItemButton>
           <ListItemButton
             onClick={() => {
+              navigate("/venues");
+              setIsSidebarOpen(false);
+            }}
+          >
+            <ListItemText primary="Venues" />
+          </ListItemButton>
+          <ListItemButton
+            onClick={() => {
               navigate("/map");
               setIsSidebarOpen(false);
             }}
@@ -85,7 +93,7 @@ const Layout = () => {
           >
             <ListItemText primary="Visiting Helsinki" />
           </ListItemButton>
-                 <ListItemButton
+          <ListItemButton
             onClick={() => {
               navigate("/peopleflow");
               setIsSidebarOpen(false);
@@ -93,6 +101,7 @@ const Layout = () => {
           >
             <ListItemText primary="People Flow" />
           </ListItemButton>
+       
 
         </List>
       </Drawer>
