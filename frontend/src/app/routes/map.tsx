@@ -455,7 +455,7 @@ function ConferenceMap({ floor = 1 }: MapProps) {
           minZoom={-1}
           maxZoom={2}
         >
-          <ImageOverlay url={import.meta.env.BASE_URL + `img/floor_${currentFloor}.jpg`} bounds={bounds} />
+          <ImageOverlay url={import.meta.env.BASE_URL + `img/floor_${currentFloor}.png`} bounds={bounds} />
 
           <Pane name="markers" style={{ zIndex: 600 }}>
             {hotspots
