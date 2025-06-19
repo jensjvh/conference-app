@@ -29,7 +29,7 @@ const root = document.getElementById("root")!;
 ReactDOM.createRoot(root).render(
     <StrictMode>
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
+        <BrowserRouter basename="/conference">
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<App />} />
