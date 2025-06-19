@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
+const BASE_PATH = '/conference/'
+
 export default defineConfig({
   base: "/conference/",
   plugins: [
@@ -17,12 +19,12 @@ export default defineConfig({
         display: 'standalone',
 	icons: [
 	  {
-	    src: `${import.meta.env.BASE_URL}icons/icon-192x192.png`,
+	    src: `${BASE_PATH}icons/icon-192x192.png`,
 	    sizes: '192x192',
 	    type: 'image/png',
 	  },
 	  {
-	    src: `${import.meta.env.BASE_URL}icons/icon-512x512.png`,
+	    src: `${BASE_PATH}icons/icon-512x512.png`,
 	    sizes: '512x512',
 	    type: 'image/png',
 	  },
