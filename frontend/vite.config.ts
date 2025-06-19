@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  base: "/conference",
+  base: "/conference/",
   plugins: [
     react(),
     VitePWA({
@@ -15,18 +15,18 @@ export default defineConfig({
         theme_color: '#ffffff',
         background_color: '#ffffff',
         display: 'standalone',
-        icons: [
-          {
-            src: '/icons/icon-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: '/icons/icon-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-        ],
+	icons: [
+	  {
+	    src: `${import.meta.env.BASE_URL}icons/icon-192x192.png`,
+	    sizes: '192x192',
+	    type: 'image/png',
+	  },
+	  {
+	    src: `${import.meta.env.BASE_URL}icons/icon-512x512.png`,
+	    sizes: '512x512',
+	    type: 'image/png',
+	  },
+	],
       },
       workbox: {
         cleanupOutdatedCaches: true,

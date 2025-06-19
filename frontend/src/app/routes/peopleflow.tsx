@@ -227,9 +227,9 @@ interface Vehicle {
 }
 
 const backend_url =
-  process.env.NODE_ENV === "development"
+  import.meta.env.MODE === "development"
     ? "http://localhost:3001/graphql-proxy"
-    : "/api/graphql-proxy";
+    : `${import.meta.env.BASE_URL}api/graphql-proxy`;
 
 // Main Component
 const DataDashboard: React.FC = () => {
