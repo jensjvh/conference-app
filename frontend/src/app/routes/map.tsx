@@ -1,12 +1,22 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { renderToStaticMarkup } from 'react-dom/server';
 import { MapContainer, ImageOverlay, Marker, Popup, useMap, Pane } from "react-leaflet";
 import L from "leaflet";
-import { Box, Button, Typography, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  useMediaQuery,
+  Menu,
+  MenuItem,
+  ListItemIcon
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import InfoIcon from '@mui/icons-material/Info';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import FloorIcon from '@mui/icons-material/Layers';
 
 interface MapProps {
   floor?: number;
@@ -29,23 +39,94 @@ interface Hotspot {
   color?: string;
 }
 
-const getLeafletIcon = (type: 'room' | 'food' | 'info') => {
-  const iconSvgString = renderToStaticMarkup(iconMap[type]);
+
+
+const getLeafletIcon = (type: 'room' | 'food' | 'info', color: string = '#E91E63') => {
+  const iconElement = (
+    <div style={{
+      backgroundColor: color,
+      width: '36px',
+      height: '36px',
+      borderRadius: '50%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      boxShadow: '0 2px 5px rgba(0,0,0,0.3)',
+      border: '2px solid white'
+    }}>
+      {React.cloneElement(iconMap[type], {
+        style: {
+          color: 'white',
+          fontSize: 20
+        }
+      })}
+    </div>
+  );
+
+  const iconSvgString = renderToStaticMarkup(iconElement);
+
   return L.divIcon({
     html: iconSvgString,
     className: '',
-    iconSize: [24, 24],
-    iconAnchor: [12, 24],
+    iconSize: [36, 36],
+    iconAnchor: [18, 18],
+    popupAnchor: [0, -20],
   });
 };
 
 const LegendControl = () => {
   const map = useMap();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  if (isMobile) return null;
 
   const legendIcons = {
-    room: renderToStaticMarkup(<MeetingRoomIcon style={{ color: '#E91E63', fontSize: 20 }} />),
-    food: renderToStaticMarkup(<RestaurantIcon style={{ color: '#FF9800', fontSize: 20 }} />),
-    info: renderToStaticMarkup(<InfoIcon style={{ color: '#2196F3', fontSize: 20 }} />),
+    room: renderToStaticMarkup(
+      <div style={{
+        backgroundColor: '#E91E63',
+        width: '24px',
+        height: '24px',
+        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+        border: '1px solid white'
+      }}>
+        <MeetingRoomIcon style={{ color: 'white', fontSize: 14 }} />
+      </div>
+    ),
+    food: renderToStaticMarkup(
+      <div style={{
+        backgroundColor: '#FF9800',
+        width: '24px',
+        height: '24px',
+        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+        border: '1px solid white'
+      }}>
+        <RestaurantIcon style={{ color: 'white', fontSize: 14 }} />
+      </div>
+    ),
+    info: renderToStaticMarkup(
+      <div style={{
+        backgroundColor: '#2196F3',
+        width: '24px',
+        height: '24px',
+        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+        border: '1px solid white'
+      }}>
+        <InfoIcon style={{ color: 'white', fontSize: 14 }} />
+      </div>
+    ),
   };
 
   useEffect(() => {
@@ -53,24 +134,28 @@ const LegendControl = () => {
 
     legend.onAdd = function () {
       const div = L.DomUtil.create("div", "info legend");
-      div.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
-      div.style.padding = "10px";
-      div.style.borderRadius = "5px";
+      div.style.backgroundColor = "rgba(255, 255, 255, 0.95)";
+      div.style.padding = "10px 12px";
+      div.style.borderRadius = "6px";
       div.style.fontSize = "14px";
+      div.style.fontWeight = "500";
+      div.style.boxShadow = "0 2px 6px rgba(0,0,0,0.15)";
+      div.style.border = "1px solid rgba(0,0,0,0.1)";
+      div.style.maxWidth = "200px";
 
       div.innerHTML = `
-        <strong>Map Legend</strong><br />
-        <div style="display:flex; align-items:center; margin-top:5px;">
-          <span style="margin-right:8px; display:flex; align-items:center;">${legendIcons.room}</span>
-          Conference Rooms
+        <div style="margin-bottom: 8px; font-weight: bold; color: #333;">Map Legend</div>
+        <div style="display:flex; align-items:center; margin-top:6px;">
+          <span style="margin-right:10px; display:flex; align-items:center;">${legendIcons.room}</span>
+          <span style="color: #333;">Conference Rooms</span>
         </div>
-        <div style="display:flex; align-items:center; margin-top:5px;">
-          <span style="margin-right:8px; display:flex; align-items:center;">${legendIcons.food}</span>
-          Food
+        <div style="display:flex; align-items:center; margin-top:6px;">
+          <span style="margin-right:10px; display:flex; align-items:center;">${legendIcons.food}</span>
+          <span style="color: #333;">Food</span>
         </div>
-        <div style="display:flex; align-items:center; margin-top:5px;">
-          <span style="margin-right:8px; display:flex; align-items:center;">${legendIcons.info}</span>
-          Information
+        <div style="display:flex; align-items:center; margin-top:6px;">
+          <span style="margin-right:10px; display:flex; align-items:center;">${legendIcons.info}</span>
+          <span style="color: #333;">Information</span>
         </div>
       `;
 
@@ -87,11 +172,108 @@ const LegendControl = () => {
   return null;
 };
 
+const MobileLegend = () => {
+  return (
+    <Box
+      sx={{
+        mt: 2,
+        p: 2,
+        bgcolor: 'rgba(255,255,255,0.9)',
+        borderRadius: 1,
+        boxShadow: '0 1px 3px rgba(0,0,0,0.12)'
+      }}
+    >
+      <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'bold' }}>
+        Map Legend:
+      </Typography>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box
+            sx={{
+              bgcolor: '#E91E63',
+              width: 24,
+              height: 24,
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              mr: 1,
+              color: 'white',
+              border: '1px solid white',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.2)'
+            }}
+          >
+            <MeetingRoomIcon fontSize="small" />
+          </Box>
+          <Typography variant="body2">Conference Rooms</Typography>
+        </Box>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box
+            sx={{
+              bgcolor: '#FF9800',
+              width: 24,
+              height: 24,
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              mr: 1,
+              color: 'white',
+              border: '1px solid white',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.2)'
+            }}
+          >
+            <RestaurantIcon fontSize="small" />
+          </Box>
+          <Typography variant="body2">Food</Typography>
+        </Box>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box
+            sx={{
+              bgcolor: '#2196F3',
+              width: 24,
+              height: 24,
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              mr: 1,
+              color: 'white',
+              border: '1px solid white',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.2)'
+            }}
+          >
+            <InfoIcon fontSize="small" />
+          </Box>
+          <Typography variant="body2">Information</Typography>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
 
 function ConferenceMap({ floor = 1 }: MapProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [currentFloor, setCurrentFloor] = useState(floor);
+
+  // Menu state
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const menuOpen = Boolean(anchorEl);
+
+  // Menu handlers
+  const handleMenuClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleFloorSelect = (floorNum: number) => {
+    setCurrentFloor(floorNum);
+    handleMenuClose();
+  };
 
   useEffect(() => {
     setCurrentFloor(floor);
@@ -155,6 +337,26 @@ function ConferenceMap({ floor = 1 }: MapProps) {
       icon: "room",
       color: "#9C27B0",
     },
+    {
+      id: "u3032",
+      x: 32.5,
+      y: 78,
+      floor: 3,
+      title: "U3032",
+      description: "FastCon WS & ICWS",
+      icon: "room",
+      color: "#9C27B0",
+    },
+    {
+      id: "f3010",
+      x: 32.5,
+      y: 23,
+      floor: 3,
+      title: "F3032",
+      description: "GraphD Symp, Sus/Res Symp & ICWS",
+      icon: "room",
+      color: "#9C27B0",
+    },
   ];
 
   const toLatLng = (xPercent: number, yPercent: number): [number, number] => {
@@ -168,40 +370,69 @@ function ConferenceMap({ floor = 1 }: MapProps) {
       <Typography variant="h4" component="h1" sx={{ fontWeight: "bold", pb: 2 }}>
         Conference Map
       </Typography>
-
       <Box
         sx={{
           mb: 2,
           display: "flex",
           justifyContent: "center",
-          flexWrap: "wrap",
-          gap: 1,
           backgroundColor: "rgba(255, 255, 255, 0.9)",
           padding: 1,
           borderRadius: 1,
         }}
       >
-        {[1, 2, 3, 4].map((floor_n) => (
-          <Button
-            key={floor_n}
-            color="primary"
-            variant="outlined"
-            onClick={() => setCurrentFloor(floor_n)}
-            sx={{
-              mb: 0.5,
-              backgroundColor: currentFloor === floor_n ? theme.palette.primary.main : "transparent",
-              color: currentFloor === floor_n ? "#fff" : theme.palette.primary.main,
-              "&:hover": {
-                backgroundColor:
-                  currentFloor === floor_n ? theme.palette.primary.dark : theme.palette.action.hover,
-              },
-            }}
-          >
-            Floor {floor_n}
-          </Button>
-        ))}
+        <Button
+          id="floor-button"
+          aria-controls={menuOpen ? 'floor-menu' : undefined}
+          aria-haspopup="true"
+          aria-expanded={menuOpen ? 'true' : undefined}
+          onClick={handleMenuClick}
+          variant="contained"
+          color="primary"
+          endIcon={<KeyboardArrowDownIcon />}
+          startIcon={<FloorIcon />}
+          sx={{
+            width: isMobile ? '100%' : 'auto',
+            textTransform: 'none',
+          }}
+        >
+          Floor {currentFloor}
+        </Button>
+        <Menu
+          id="floor-menu"
+          anchorEl={anchorEl}
+          open={menuOpen}
+          onClose={handleMenuClose}
+          MenuListProps={{
+            'aria-labelledby': 'floor-button',
+            dense: isMobile,
+          }}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+        >
+          {[1, 2, 3, 4].map((floorNum) => (
+            <MenuItem
+              key={floorNum}
+              onClick={() => handleFloorSelect(floorNum)}
+              selected={currentFloor === floorNum}
+              sx={{
+                minWidth: 120,
+                fontWeight: currentFloor === floorNum ? 'bold' : 'normal',
+              }}
+            >
+              <ListItemIcon>
+                <FloorIcon color={currentFloor === floorNum ? "primary" : "action"} />
+              </ListItemIcon>
+              Floor {floorNum}
+            </MenuItem>
+          ))}
+        </Menu>
       </Box>
-
       <Box
         sx={{
           flexGrow: 1,
@@ -215,9 +446,14 @@ function ConferenceMap({ floor = 1 }: MapProps) {
         <MapContainer
           crs={L.CRS.Simple}
           bounds={bounds}
-          scrollWheelZoom={false}
+          scrollWheelZoom={true}
           style={{ height: "100%", width: "100%" }}
-          key={currentFloor} // reset map when floor changes
+          key={currentFloor}
+          center={[imageHeight / 2, imageWidth / 2]}
+          zoomControl={true}
+          zoom={0}
+          minZoom={-1}
+          maxZoom={2}
         >
           <ImageOverlay url={`/floor_${currentFloor}.png`} bounds={bounds} />
 
@@ -230,7 +466,7 @@ function ConferenceMap({ floor = 1 }: MapProps) {
                   <Marker
                     key={hotspot.id}
                     position={position}
-                    icon={getLeafletIcon(hotspot.icon)}
+                    icon={getLeafletIcon(hotspot.icon, hotspot.color)}
                   >
                     <Popup>
                       <Typography variant="h6" sx={{ color: hotspot.color, fontWeight: "bold" }}>
@@ -246,6 +482,8 @@ function ConferenceMap({ floor = 1 }: MapProps) {
           <LegendControl />
         </MapContainer>
       </Box>
+
+      {isMobile && <MobileLegend />}
     </Box>
   );
 }

@@ -76,7 +76,7 @@ function App() {
             fontWeight: "bold",
           }}
         >
-          Tuesday-Friday: Complimentary access to{" "}
+          Tuesday 8.7-Friday 11.7: Complimentary access to{" "}
           <Link href="https://www.helsinki.fi/en/helsinki-university-museum-flame/helsinki-university-museum-flame-exhibition-centre">
             Helsinki University Museum Flame exhibition centre
           </Link>
