@@ -61,37 +61,37 @@ const Program = () => {
             title: "IEEE CLOUD",
             link: "https://services.conferences.computer.org/2025/cloud/",
             description: "Helsinki Public Transport",
-            image: "/img/ieee.png",
+            image: import.meta.env.BASE_URL + 'img/ieee.jpg',
         },
         {
             title: "IEEE EDGE",
             link: "https://services.conferences.computer.org/2025/edge/",
             description: "Current events",
-            image: "/img/ieee.png",
+            image: import.meta.env.BASE_URL + 'img/ieee.jpg',
         },
         {
             title: "IEEE ICDH",
             link: "https://services.conferences.computer.org/2025/icdh/",
             description: "History of Helsinki",
-            image: "/img/ieee.png",
+            image: import.meta.env.BASE_URL + 'img/ieee.jpg',
         },
         {
             title: "IEEE ICWS",
             link: "https://services.conferences.computer.org/2025/icws/",
             description: "Parks in Helsinki",
-            image: "/img/ieee.png",
+            image: import.meta.env.BASE_URL + 'img/ieee.jpg',
         },
         {
             title: "IEEE QSW",
             link: "https://services.conferences.computer.org/2025/qsw/",
             description: "Parks in Helsinki",
-            image: "/img/ieee.png",
+            image: import.meta.env.BASE_URL + 'img/ieee.jpg',
         },
         {
             title: "IEEE SSE",
             link: "https://services.conferences.computer.org/2025/sse/",
             description: "Parks in Helsinki",
-            image: "/img/ieee.png",
+            image: import.meta.env.BASE_URL + 'img/ieee.jpg',
         },
     ];
 

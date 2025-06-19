@@ -76,25 +76,25 @@ const UsefulLinks = () => {
             title: "Public transport",
             link: "https://www.hsl.fi/en",
             description: "Helsinki Public Transport",
-            image: "/img/oodi.jpg",
+            image: import.meta.env.BASE_URL + 'img/oodi.jpg',
         },
         {
             title: "Visiting Helsinki",
             link: "https://www.myhelsinki.fi/visit/",
             description: "Current events",
-            image: "/img/church.jpg",
+            image: import.meta.env.BASE_URL + 'img/church.jpg',
         },
         {
             title: "History",
             link: "https://historia.hel.fi/en",
             description: "History of Helsinki",
-            image: "/img/houses.jpg",
+            image: import.meta.env.BASE_URL + 'img/houses.jpg',
         },
         {
             title: "Nature",
             link: "https://www.myhelsinki.fi/live-work/nature-and-urban-fun/",
             description: "Parks in Helsinki",
-            image: "/img/swan.jpg",
+            image: import.meta.env.BASE_URL + 'img/swan.jpg',
         },
     ];
 

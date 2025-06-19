@@ -366,7 +366,7 @@ const DataDashboard: React.FC = () => {
           variant="h6"
           sx={{ fontWeight: 'bold', mb: 2, textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}
         >
-          <img src="/img/bike-svgrepo-com.svg" alt="Bike" style={{ width: 28, height: 28 }} />
+          <img src={import.meta.env.BASE_URL + '/img/bike-svgrepo-com.svg'} alt="Bike" style={{ width: 28, height: 28 }} />
           Live HSL Bike Map
         </Typography>
 

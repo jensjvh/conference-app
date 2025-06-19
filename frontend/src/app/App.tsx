@@ -53,7 +53,7 @@ function App() {
   return (
     <Box className="pb-8 min-h-screen" sx={{ bgcolor: "#f9fafb" }}>
       <img
-        src="img/people.jpg"
+        src={import.meta.env.BASE_URL + 'img/people.jpg'}
         alt="Technology conference"
         style={{ maxWidth: "100%", height: "auto" }}
       />
