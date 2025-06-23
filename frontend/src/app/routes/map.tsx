@@ -79,8 +79,6 @@ const LegendControl = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  if (isMobile) return null;
-
   const legendIcons = {
     room: renderToStaticMarkup(
       <div style={{
@@ -130,6 +128,8 @@ const LegendControl = () => {
   };
 
   useEffect(() => {
+    if (isMobile) return;
+    
     const legend = L.control.attribution({ position: "bottomright" });
 
     legend.onAdd = function () {
@@ -167,7 +167,7 @@ const LegendControl = () => {
     return () => {
       legend.remove();
     };
-  }, [map, legendIcons]);
+  }, [map, legendIcons, isMobile]);
 
   return null;
 };
@@ -368,7 +368,7 @@ function ConferenceMap({ floor = 1 }: MapProps) {
   return (
     <Box sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
       <Typography variant="h4" component="h1" sx={{ fontWeight: "bold", pb: 2 }}>
-        Conference Map
+        Venue Map
       </Typography>
       <Box
         sx={{
@@ -402,10 +402,16 @@ function ConferenceMap({ floor = 1 }: MapProps) {
           anchorEl={anchorEl}
           open={menuOpen}
           onClose={handleMenuClose}
-          MenuListProps={{
-            'aria-labelledby': 'floor-button',
-            dense: isMobile,
+          slotProps={{
+            paper: {
+              sx: {
+                '& .MuiList-root': {
+                  py: isMobile ? 0.5 : 1,
+                }
+              }
+            }
           }}
+          aria-labelledby="floor-button"
           anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'center',
@@ -414,7 +420,7 @@ function ConferenceMap({ floor = 1 }: MapProps) {
             vertical: 'top',
             horizontal: 'center',
           }}
-        >
+>
           {[1, 2, 3, 4].map((floorNum) => (
             <MenuItem
               key={floorNum}
@@ -448,14 +454,17 @@ function ConferenceMap({ floor = 1 }: MapProps) {
           bounds={bounds}
           scrollWheelZoom={true}
           style={{ height: "100%", width: "100%" }}
-          key={currentFloor}
           center={[imageHeight / 2, imageWidth / 2]}
           zoomControl={true}
           zoom={0}
           minZoom={-1}
           maxZoom={2}
         >
-          <ImageOverlay url={import.meta.env.BASE_URL + `img/floor_${currentFloor}.png`} bounds={bounds} />
+          <ImageOverlay 
+            key={`floor-${currentFloor}`}
+            url={import.meta.env.BASE_URL + `img/floor_${currentFloor}.png`} 
+            bounds={bounds} 
+          />
 
           <Pane name="markers" style={{ zIndex: 600 }}>
             {hotspots

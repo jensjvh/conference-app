@@ -29,7 +29,7 @@ const Layout = () => {
           </Button>
           <Button
         color="secondary"
-        onClick={() => navigate('/')}
+        onClick={() => navigate('//')}
         style={{ textTransform: 'none' }} 
       >
         IEEE Services 2025
