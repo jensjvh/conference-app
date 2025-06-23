@@ -6,7 +6,6 @@ import App from './app/App.tsx';
 import ConferenceMap from './app/routes/map.tsx';
 import UsefulLinks from './app/routes/links.tsx';
 import Program from './app/routes/program.tsx';
-import Breaks from './app/routes/lunch_coffee.tsx';
 import PeopleFlow from './app/routes/peopleflow.tsx';
 import Venues from './app/routes/venues.tsx';
 import Layout from './components/Layout.tsx';
@@ -36,7 +35,6 @@ ReactDOM.createRoot(root).render(
               <Route path="/map" element={<ConferenceMap floor={1} />} />
               <Route path="/links" element={<UsefulLinks />} />
               <Route path="/program" element={<Program />} />
-              <Route path="/breaks" element={<Breaks />} />
               <Route path="/peopleflow" element={<PeopleFlow />} />
               <Route path="/venues" element={<Venues />} />
             </Route>

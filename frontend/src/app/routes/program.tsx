@@ -8,6 +8,7 @@ import {
   useMediaQuery
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import ConferenceScheduleTable from '../../components/Schedule';
 
 interface ContentProps {
   title: string;
@@ -85,11 +86,12 @@ const Program = () => {
   return (
     <Box sx={{ px: isMobile ? 2 : 4, py: 4 }}>
       <Typography variant="h3" sx={{ fontWeight: 'bold', pb: 3 }}>
-        Program
+        SERVICES 2025 Program
       </Typography>
       <Typography variant="body1" sx={{ fontWeight: 'bold', fontSize: '24px', pb: 4}}>
         Up-to-date program can be found <Link href="https://services.conferences.computer.org/2025/program/">here</Link>
       </Typography>
+      <ConferenceScheduleTable/>
       <Box
         sx={{
           display: 'grid',
@@ -101,6 +103,7 @@ const Program = () => {
           },
           gap: 3,
           alignItems: 'stretch',
+          marginTop: '1em',
         }}
       >
         {contents.map((item, index) => (

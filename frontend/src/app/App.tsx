@@ -66,23 +66,7 @@ function App() {
             >
               Map
             </Button>
-            <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
-            <Button
-              onClick={() => navigate("/breaks")}
-              color="primary"
-              sx={{
-                fontSize: '0.9rem',
-                fontWeight: 'medium',
-                padding: '4px 8px',
-                minWidth: 'auto',
-                '&:hover': {
-                  backgroundColor: 'transparent',
-                  textDecoration: 'underline',
-                }
-              }}
-            >
-              Lunch & Coffee
-            </Button>
+
             <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
             <Button
               onClick={() => navigate("/venues")}
@@ -168,21 +152,6 @@ function App() {
             </Button>
             <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
             <Button
-              onClick={() => navigate("/breaks")}
-              color="primary"
-              sx={{
-                fontSize: '1.1rem',
-                fontWeight: 'medium',
-                '&:hover': {
-                  backgroundColor: 'transparent',
-                  textDecoration: 'underline',
-                }
-              }}
-            >
-              Lunch & Coffee
-            </Button>
-            <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
-            <Button
               onClick={() => navigate("/venues")}
               color="primary"
               sx={{
@@ -265,87 +234,15 @@ function App() {
         </Typography>
       </Box>
       <Box className="p-8 bg-white">
-        <Typography
-          variant="body1"
-          component="p"
-          className="text-lg mb-6 leading-relaxed"
-          sx={{
-            fontSize: "1.125rem",
-            mb: 2,
-            lineHeight: 1.6,
-            textAlign: "left",
+        <Typography 
+          variant="body1" 
+          sx={{ 
+            mt: 2, 
+            textAlign: 'center',
+            fontSize: "1.1rem"
           }}
         >
-          The 2025 IEEE World Congress on SERVICES (SERVICES 2025) is solely
-          sponsored by the IEEE Computer Society under the auspice of the
-          Technical Community on Services Computing (TCSVC). With six theme
-          conferences, the scope of SERVICES 2025 covers all aspects of services
-          computing and applications, current or emerging.
-        </Typography>
-        <Typography
-          variant="body1"
-          component="p"
-          className="text-lg mb-6 leading-relaxed"
-          sx={{
-            fontSize: "1.125rem",
-            mb: 2,
-            lineHeight: 1.6,
-            textAlign: "left",
-          }}
-        >
-          Centered around services computing, SERVICES 2025 covers various
-          systems and networking research pertaining to cloud, edge and
-          Internet-of Things (IoT), as well as technologies for intelligent
-          computing, learning, Big Data and blockchain applications, addressing
-          critical issues such as knowledge network, high performance, security,
-          privacy, dependability, trustworthiness, and cost-effectiveness.
-        </Typography>
-        <Typography
-          variant="body1"
-          component="p"
-          className="text-lg mb-6 leading-relaxed"
-          sx={{
-            fontSize: "1.125rem",
-            mb: 2,
-            lineHeight: 1.6,
-            textAlign: "left",
-          }}
-        >
-          In addition to co-located theme-topic conferences, the Congress will
-          also include symposia and workshops supporting deep-dive discussions
-          on emerging important topics, and complement the SERVICES 2025 program
-          with industry and application presentations and panels.
-        </Typography>
-        <Typography
-          variant="body1"
-          component="p"
-          className="text-lg mb-6 leading-relaxed"
-          sx={{
-            fontSize: "1.125rem",
-            mb: 2,
-            lineHeight: 1.6,
-            textAlign: "left",
-          }}
-        >
-          Authors are invited to prepare early and submit original papers to any
-          of these conferences at www.easychair.org. All submitted manuscripts
-          will be peer-reviewed by at least three reviewers. Accepted and
-          presented papers will appear in the conference proceedings published
-          by the IEEE Computer Society Press.
-        </Typography>
-        <Typography
-          variant="body1"
-          component="p"
-          className="text-lg mb-6 leading-relaxed"
-          sx={{
-            fontSize: "1.125rem",
-            mb: 2,
-            lineHeight: 1.6,
-            textAlign: "left",
-          }}
-        >
-          SERVICES 2025 is the only premier professional event for the services
-          computing field offered by IEEE.
+          Welcome to the SERVICES 2025 Congress mobile app! Use this app to navigate the conference schedule, find venues, discover Helsinki, and learn about people flow related to IEEE conferences.
         </Typography>
       </Box>
     </Box>

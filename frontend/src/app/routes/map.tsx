@@ -386,7 +386,6 @@ function ConferenceMap({ floor = 1 }: MapProps) {
           aria-haspopup="true"
           aria-expanded={menuOpen ? 'true' : undefined}
           onClick={handleMenuClick}
-          variant="contained"
           color="primary"
           endIcon={<KeyboardArrowDownIcon />}
           startIcon={<FloorIcon />}
