@@ -1,52 +1,234 @@
 import { useNavigate } from "react-router";
-import React from "react";
-import { Button, Box, Typography, Link } from "@mui/material";
+import { Button, Box, Typography, Link, Divider, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import "./App.css";
 import "leaflet/dist/leaflet.css";
 
 function App() {
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const ConferenceButtons = () => {
+
+  const ConferenceNav = () => {
     return (
-      <React.Fragment>
-        <Typography variant="body1" component="p" className="mb-6">
-          <Button
-            onClick={() => navigate("/program")}
-            variant="contained"
-            size="large"
-          >
-            Program
-          </Button>
-        </Typography>
-        <Typography variant="body1" component="p" className="mb-6">
-          <Button
-            onClick={() => navigate("/breaks")}
-            variant="contained"
-            size="large"
-          >
-            Lunch & Coffee
-          </Button>
-        </Typography>
-        <Typography variant="body1" component="p" className="mb-6">
-          <Button
-            onClick={() => navigate("/map")}
-            variant="contained"
-            size="large"
-          >
-            Map
-          </Button>
-        </Typography>
-        <Typography variant="body1" component="p" className="mb-6">
-          <Button
-            onClick={() => navigate("/links")}
-            variant="contained"
-            size="large"
-          >
-            Visiting Helsinki
-          </Button>
-        </Typography>
-      </React.Fragment>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: { xs: 1, sm: 0 },
+          marginTop: 2,
+          marginBottom: 5,
+        }}
+      >
+        {isMobile ? (
+          <Box sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            gap: 0.5,
+            width: '100%',
+            px: 1,
+          }}>
+            <Button
+              onClick={() => navigate("/program")}
+              color="primary"
+              sx={{
+                fontSize: '0.9rem',
+                fontWeight: 'medium',
+                padding: '4px 8px',
+                minWidth: 'auto',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                  textDecoration: 'underline',
+                }
+              }}
+            >
+              Program
+            </Button>
+            <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
+            <Button
+              onClick={() => navigate("/map")}
+              color="primary"
+              sx={{
+                fontSize: '0.9rem',
+                fontWeight: 'medium',
+                padding: '4px 8px',
+                minWidth: 'auto',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                  textDecoration: 'underline',
+                }
+              }}
+            >
+              Map
+            </Button>
+            <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
+            <Button
+              onClick={() => navigate("/breaks")}
+              color="primary"
+              sx={{
+                fontSize: '0.9rem',
+                fontWeight: 'medium',
+                padding: '4px 8px',
+                minWidth: 'auto',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                  textDecoration: 'underline',
+                }
+              }}
+            >
+              Lunch & Coffee
+            </Button>
+            <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
+            <Button
+              onClick={() => navigate("/venues")}
+              color="primary"
+              sx={{
+                fontSize: '0.9rem',
+                fontWeight: 'medium',
+                padding: '4px 8px',
+                minWidth: 'auto',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                  textDecoration: 'underline',
+                }
+              }}
+            >
+              Venues
+            </Button>
+            <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
+            <Button
+              onClick={() => navigate("/links")}
+              color="primary"
+              sx={{
+                fontSize: '0.9rem',
+                fontWeight: 'medium',
+                padding: '4px 8px',
+                minWidth: 'auto',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                  textDecoration: 'underline',
+                }
+              }}
+            >
+              Helsinki
+            </Button>
+            <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
+            <Button
+              onClick={() => navigate("/peopleflow")}
+              color="primary"
+              sx={{
+                fontSize: '0.9rem',
+                fontWeight: 'medium',
+                padding: '4px 8px',
+                minWidth: 'auto',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                  textDecoration: 'underline',
+                }
+              }}
+            >
+              People flow
+            </Button>
+          </Box>
+        ) : (
+          <>
+            <Button
+              onClick={() => navigate("/program")}
+              color="primary"
+              sx={{
+                fontSize: '1.1rem',
+                fontWeight: 'medium',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                  textDecoration: 'underline',
+                }
+              }}
+            >
+              Program
+            </Button>
+            <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
+            <Button
+              onClick={() => navigate("/map")}
+              color="primary"
+              sx={{
+                fontSize: '1.1rem',
+                fontWeight: 'medium',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                  textDecoration: 'underline',
+                }
+              }}
+            >
+              Map
+            </Button>
+            <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
+            <Button
+              onClick={() => navigate("/breaks")}
+              color="primary"
+              sx={{
+                fontSize: '1.1rem',
+                fontWeight: 'medium',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                  textDecoration: 'underline',
+                }
+              }}
+            >
+              Lunch & Coffee
+            </Button>
+            <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
+            <Button
+              onClick={() => navigate("/venues")}
+              color="primary"
+              sx={{
+                fontSize: '1.1rem',
+                fontWeight: 'medium',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                  textDecoration: 'underline',
+                }
+              }}
+            >
+              Venues
+            </Button>
+            <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
+            <Button
+              onClick={() => navigate("/links")}
+              color="primary"
+              sx={{
+                fontSize: '1.1rem',
+                fontWeight: 'medium',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                  textDecoration: 'underline',
+                }
+              }}
+            >
+              Visiting Helsinki
+            </Button>
+            <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
+            <Button
+              onClick={() => navigate("/peopleflow")}
+              color="primary"
+              sx={{
+                fontSize: '1.1rem',
+                fontWeight: 'medium',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                  textDecoration: 'underline',
+                }
+              }}
+            >
+              People flow
+            </Button>
+          </>
+        )}
+      </Box>
     );
   };
 
@@ -60,9 +242,9 @@ function App() {
       <Typography variant="h3" sx={{ fontWeight: "bold", pt: 4 }}>
         2025 IEEE World Congress on SERVICES
       </Typography>
-      <Box className="pt-8 pb-8 mb-8 flex flex-col gap-6 sm:flex-row sm:justify-center">
-        {ConferenceButtons()}
-      </Box>
+
+      {/* Replace the old buttons with the new navigation */}
+      <ConferenceNav />
       <Box
         className="p-8 bg-white"
         sx={{ border: 5, borderColor: "lightblue" }}

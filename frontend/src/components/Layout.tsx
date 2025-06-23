@@ -63,6 +63,14 @@ const Layout = () => {
           </ListItemButton>
           <ListItemButton
             onClick={() => {
+              navigate("/map");
+              setIsSidebarOpen(false);
+            }}
+          >
+            <ListItemText primary="Map" />
+          </ListItemButton>
+          <ListItemButton
+            onClick={() => {
               navigate("/breaks");
               setIsSidebarOpen(false);
             }}
@@ -76,14 +84,6 @@ const Layout = () => {
             }}
           >
             <ListItemText primary="Venues" />
-          </ListItemButton>
-          <ListItemButton
-            onClick={() => {
-              navigate("/map");
-              setIsSidebarOpen(false);
-            }}
-          >
-            <ListItemText primary="Map" />
           </ListItemButton>
           <ListItemButton
             onClick={() => {
