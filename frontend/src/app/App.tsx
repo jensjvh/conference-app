@@ -234,12 +234,15 @@ function App() {
         </Typography>
       </Box>
       <Box className="p-8 bg-white">
-        <Typography 
-          variant="body1" 
-          sx={{ 
-            mt: 2, 
-            textAlign: 'center',
-            fontSize: "1.1rem"
+        <Typography
+          variant="body1"
+          component="p"
+          className="text-lg mb-6 leading-relaxed"
+          sx={{
+            fontSize: "1.125rem",
+            mb: 2,
+            lineHeight: 1.6,
+            textAlign: "left",
           }}
         >
           Welcome to the SERVICES 2025 Congress mobile app! Use this app to navigate the conference schedule, find venues, discover Helsinki, and learn about people flow related to IEEE conferences.
