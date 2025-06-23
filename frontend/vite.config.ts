@@ -11,24 +11,20 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Conference App',
-        short_name: 'ConfApp',
-        description: 'IEEE Services 2025 Conference application',
+        name: 'SERVICES 2025 App',
+        short_name: 'SERVICES 2025 App',
+        description: 'IEEE SERVICES 2025 Congress Application',
         theme_color: '#ffffff',
         background_color: '#ffffff',
         display: 'standalone',
-	icons: [
-	  {
-	    src: `${BASE_PATH}icons/icon-192x192.png`,
-	    sizes: '192x192',
-	    type: 'image/png',
-	  },
-	  {
-	    src: `${BASE_PATH}icons/icon-512x512.png`,
-	    sizes: '512x512',
-	    type: 'image/png',
-	  },
-	],
+        icons: [
+          {
+            src: `${BASE_PATH}icons/icon.svg`,
+            sizes: 'any',
+            type: 'image/svg+xml',
+            purpose: 'any',
+          },
+        ],
       },
       workbox: {
         cleanupOutdatedCaches: true,
@@ -51,11 +47,10 @@ export default defineConfig({
               cacheName: 'images-cache',
               expiration: {
                 maxEntries: 100,
-                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
+                maxAgeSeconds: 30 * 24 * 60 * 60,
               },
             },
           },
-          // Cache CSS and JS files
           {
             urlPattern: /\.(?:js|css)$/,
             handler: 'StaleWhileRevalidate',

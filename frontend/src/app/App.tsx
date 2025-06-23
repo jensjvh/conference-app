@@ -58,7 +58,7 @@ function App() {
         style={{ maxWidth: "100%", height: "auto" }}
       />
       <Typography variant="h3" sx={{ fontWeight: "bold", pt: 4 }}>
-        IEEE Services 2025
+        2025 IEEE World Congress on SERVICES
       </Typography>
       <Box className="pt-8 pb-8 mb-8 flex flex-col gap-6 sm:flex-row sm:justify-center">
         {ConferenceButtons()}

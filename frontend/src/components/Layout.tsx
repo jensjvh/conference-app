@@ -32,7 +32,7 @@ const Layout = () => {
         onClick={() => navigate('//')}
         style={{ textTransform: 'none' }} 
       >
-        IEEE Services 2025
+        IEEE SERVICES 2025
       </Button>
 
         </Toolbar>

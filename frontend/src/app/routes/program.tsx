@@ -25,27 +25,13 @@ const CardText = ({ content }: CardTextProps) => (
     <CardContent sx={{ flexGrow: 1 }}>
       <Box
         sx={{
-          width: '100%',
-          height: 200,
-          borderRadius: 2,
-          overflow: 'hidden',
-          mb: 2,
+          background:"#dee7ea"
         }}
       >
-        <img
-          src={content.image}
-          alt={content.title}
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            borderRadius: '8px',
-          }}
-        />
-      </Box>
-      <Typography gutterBottom className="text-black text-md">
+        <Typography gutterBottom className="text-black text-md">
         {content.title}
       </Typography>
+      </Box>
       <Typography variant="body2" className="text-gray-700">
         {content.description}
       </Typography>
