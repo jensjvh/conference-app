@@ -9,32 +9,20 @@ const breakSchedule = [
     breaks: [
       {
         type: "coffee",
-        time: "09:10 - 09:25",
-        location: "Main Hall",
-        description: "Coffee Break"
-      },
-      {
-        type: "coffee",
-        time: "10:35 - 10:50",
-        location: "Main Hall",
+        time: "10:10 - 10:30",
+        location: "2nd floor",
         description: "Coffee Break"
       },
       {
         type: "lunch",
-        time: "12:00 - 14:00",
+        time: "12:50 - 14:00",
         location: "Conference Venue",
         description: "Lunch Break"
       },
       {
         type: "coffee",
-        time: "15:10 - 15:25",
-        location: "Main Hall",
-        description: "Coffee Break"
-      },
-      {
-        type: "coffee",
-        time: "16:35 - 16:50",
-        location: "Main Hall",
+        time: "15:10 - 15:30",
+        location: "2nd floor",
         description: "Coffee Break"
       }
     ]
@@ -44,26 +32,20 @@ const breakSchedule = [
     breaks: [
       {
         type: "coffee",
-        time: "10:35 - 10:50",
-        location: "Main Hall",
+        time: "10:30 - 10:50",
+        location: "2nd floor and 3rd floor",
         description: "Coffee Break"
       },
       {
         type: "lunch",
-        time: "12:00 - 14:00",
+        time: "12:30 - 13:40",
         location: "Conference Venue",
         description: "Lunch Break"
       },
       {
         type: "coffee",
-        time: "15:10 - 15:25",
-        location: "Main Hall",
-        description: "Coffee Break"
-      },
-      {
-        type: "coffee",
-        time: "16:35 - 16:50",
-        location: "Main Hall",
+        time: "14:50 - 15:10",
+        location: "2nd floor and 3rd floor",
         description: "Coffee Break"
       }
     ]
@@ -73,34 +55,22 @@ const breakSchedule = [
     breaks: [
       {
         type: "coffee",
-        time: "9:10 - 9:25",
-        location: "Main Hall",
-        description: "Coffee Break"
-      },
-      {
-        type: "coffee",
-        time: "10:35 - 10:50",
-        location: "Main Hall",
+        time: "10:50 - 11:10",
+        location: "2nd floor and 3rd floor",
         description: "Coffee Break"
       },
       {
         type: "lunch",
-        time: "12:00 - 14:00",
-        location: "Dining Hall", 
+        time: "12:30 - 13:40",
+        location: "Conference Venue", 
         description: "Lunch Break"
       },
       {
         type: "coffee",
-        time: "15:10 - 15:25",
-        location: "Main Hall",
+        time: "14:50 - 15:10",
+        location: "2nd floor and 3rd floor",
         description: "Coffee Break"
-      },
-      {
-        type: "coffee",
-        time: "16:35 - 16:50",
-        location: "Main Hall",
-        description: "Coffee Break"
-      },
+      }
     ]
   },
   {
@@ -108,28 +78,22 @@ const breakSchedule = [
     breaks: [
       {
         type: "coffee",
-        time: "09:10 - 09:25",
-        location: "Main Hall",
-        description: "Coffee Break"
-      },
-      {
-        type: "coffee",
-        time: "10:35 - 10:50",
-        location: "Main Hall",
+        time: "10:50 - 11:10",
+        location: "2nd floor and 3rd floor",
         description: "Coffee Break"
       },
       {
         type: "lunch",
-        time: "12:00 - 14:00",
+        time: "12:30 - 13:40",
         location: "Conference Venue", 
         description: "Lunch Break"
       },
       {
         type: "coffee",
-        time: "15:10 - 15:25",
-        location: "Main Hall",
+        time: "14:50 - 15:10",
+        location: "2nd floor and 3rd floor",
         description: "Coffee Break"
-      },
+      }
     ]
   },
   {
@@ -137,32 +101,20 @@ const breakSchedule = [
     breaks: [
       {
         type: "coffee",
-        time: "09:10 - 09:25",
-        location: "Main Hall",
-        description: "Coffee Break"
-      },
-      {
-        type: "coffee",
-        time: "10:35 - 10:50",
-        location: "Main Hall",
+        time: "10:50 - 11:10",
+        location: "2nd floor and 3rd floor",
         description: "Coffee Break"
       },
       {
         type: "lunch",
-        time: "12:00 - 14:00",
+        time: "12:30 - 13:40",
         location: "Conference Venue", 
         description: "Lunch Break"
       },
       {
         type: "coffee",
-        time: "15:10 - 15:25",
-        location: "Main Hall",
-        description: "Coffee Break"
-      },
-      {
-        type: "coffee",
-        time: "16:35 - 16:50",
-        location: "Main Hall",
+        time: "14:50 - 15:10",
+        location: "2nd floor and 3rd floor",
         description: "Coffee Break"
       }
     ]
@@ -172,19 +124,13 @@ const breakSchedule = [
     breaks: [
       {
         type: "coffee",
-        time: "09:10 - 09:25",
-        location: "Main Hall",
-        description: "Coffee Break"
-      },
-      {
-        type: "coffee",
-        time: "10:35 - 10:50",
-        location: "Main Hall",
+        time: "09:40 - 10:00",
+        location: "2nd floor",
         description: "Coffee Break"
       },
       {
         type: "lunch",
-        time: "12:30 - 14:00",
+        time: "12:30 - 13:40",
         location: "Conference Venue", 
         description: "Lunch Break"
       }
