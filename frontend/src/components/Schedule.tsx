@@ -74,10 +74,11 @@ const ConferenceScheduleTable = () => {
     if (sessionName.includes('CLD') || sessionName.includes('CLOUD')) return 'Cloud Conference';
     if (sessionName.includes('EDG') || sessionName.includes('EDGE')) return 'Edge Conference';
     if (sessionName.includes('ICDH')) return 'ICDH Conference';
-    if (sessionName.includes('SSE') && !sessionName.includes('SSEdu')) return 'SSE Conference';
+
+    if (sessionName.includes('SSEedu') || sessionName.includes('SSEedu-SYM')) return 'SSEedu Symposium';
+    if (sessionName.includes('SSE')) return 'SSE Conference';
     if (sessionName.includes('ICWS')) return 'ICWS Conference';
     if (sessionName.includes('SUS')) return 'Sus/Res Symposium';
-    if (sessionName.includes('SSEdu')) return 'SSEedu Symposium';
     return '';
   };
 

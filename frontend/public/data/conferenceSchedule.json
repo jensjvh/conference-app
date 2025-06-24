@@ -103,7 +103,7 @@
       {
         "time": "09:20 - 10:30",
         "type": "keynote",
-        "content": "Plenary Keynote 1: The Limits of Cloud Computing and the Emergence of Edge Computing, Mahadev Satyanarayanan (9:20 - 10:30) | Auditorium (F2044)",
+        "content": "Plenary I: The Limits of Cloud Computing and the Emergence of Edge Computing, Mahadev Satyanarayanan (9:20 - 10:30) | Auditorium (F2044)",
         "spans": 13
       },
       {
@@ -126,7 +126,7 @@
       {
         "time": "12:00 - 12:30",
         "type": "networking",
-        "content": "Networking Session (Agora, Fabian, and Fulsi areas)",
+        "content": "Networking Session (Agora, Fabian, and Fuksi areas)",
         "spans": 13
       },
       {
@@ -203,7 +203,7 @@
       {
         "time": "09:40 - 10:50",
         "type": "keynote",
-        "content": "Plenary Keynote II: Services with LINEAT - What You Need, Is What You Get, Dimitrios Tsoumakos | Auditorium (F2044)",
+        "content": "Plenary Keynote II: Services with UNEXT - What You Need, is What You Get, Azimeh Sefidcon | Auditorium (F2044)",
         "spans": 13
       },
       {
@@ -215,7 +215,7 @@
       {
         "time": "12:20 - 12:30",
         "type": "networking",
-        "content": "Networking Session (Agora, Fabian, and Fulsi areas)",
+        "content": "Networking Session (Agora, Fabian, and Fuksi areas)",
         "spans": 13
       },
       {
@@ -289,7 +289,7 @@
       {
         "time": "09:40 - 10:50",
         "type": "keynote",
-        "content": "Plenary Keynote 4: PCU - The New Health Service Architecture, Satish Narayana Srirama Jain | Auditorium (F2044)",
+        "content": "Plenary Keynote 4: PCU - The New Health Service Architecture, Ramesh Jain | Auditorium (F2044)",
         "spans": 13
       },
       {
@@ -314,7 +314,7 @@
       {
         "time": "12:20 - 12:30",
         "type": "networking",
-        "content": "Networking Session (Agora, Fabian, and Fulsi areas)",
+        "content": "Networking Session (Agora, Fabian, and Fuksi areas)",
         "spans": 13
       },
       {
@@ -401,7 +401,7 @@
       {
         "time": "12:20 - 12:30",
         "type": "networking",
-        "content": "Networking Session (Agora, Fabian, and Fulsi areas)",
+        "content": "Networking Session (Agora, Fabian, and Fuksi areas)",
         "spans": 13
       },
       {
@@ -480,7 +480,7 @@
       {
         "time": "12:20 - 12:30",
         "type": "networking",
-        "content": "Networking Session (Agora, Fabian, and Fulsi areas)",
+        "content": "Networking Session (Agora, Fabian, and Fuksi areas)",
         "spans": 13
       },
       {

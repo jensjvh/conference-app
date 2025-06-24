@@ -84,7 +84,7 @@ const Program = () => {
   ];
 
   return (
-    <Box sx={{ px: isMobile ? 2 : 4, py: 4 }}>
+    <Box sx={{ px: isMobile ? 0.5 : 4, py: 4 }}>
       <Typography variant="h3" sx={{ fontWeight: 'bold', pb: 3 }}>
         SERVICES 2025 Program
       </Typography>
