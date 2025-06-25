@@ -316,47 +316,7 @@ function ConferenceMap({ floor = 1 }: MapProps) {
       description: "Coffee breaks and lunch",
       icon: "food",
       color: "#FF9800",
-    },
-    {
-      id: "room-a",
-      x: 47.7,
-      y: 59,
-      floor: 2,
-      title: "Room A",
-      description: "",
-      icon: "room",
-      color: "#4CAF50",
-    },
-    {
-      id: "room-b",
-      x: 47.7,
-      y: 44,
-      floor: 2,
-      title: "Room B",
-      description: "",
-      icon: "room",
-      color: "#9C27B0",
-    },
-    {
-      id: "u3032",
-      x: 32.5,
-      y: 78,
-      floor: 3,
-      title: "U3032",
-      description: "FastCon WS & ICWS",
-      icon: "room",
-      color: "#9C27B0",
-    },
-    {
-      id: "f3010",
-      x: 32.5,
-      y: 23,
-      floor: 3,
-      title: "F3032",
-      description: "GraphD Symp, Sus/Res Symp & ICWS",
-      icon: "room",
-      color: "#9C27B0",
-    },
+    }
   ];
 
   const toLatLng = (xPercent: number, yPercent: number): [number, number] => {
