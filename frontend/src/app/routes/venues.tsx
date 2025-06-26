@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Link } from "@mui/material";
 
 const locations = [
   {
@@ -18,13 +18,27 @@ const locations = [
     mapUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7938.188768427484!2d24.904080987158203!3d60.17167470000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920bc6b0a494eb%3A0xe61913c762dca278!2zUmF2aW50b2xhIFTDtsO2bMO2!5e0!3m2!1sen!2sfi!4v1750148283683!5m2!1sen!2sfi",
     image: import.meta.env.BASE_URL + "img/Restaurant.jpg",
-  }
+    credit: (
+      <>
+        Photo: Herman Alfred Turja (
+        <Link
+          href="https://creativecommons.org/licenses/by/4.0/"
+          target="_blank"
+          rel="noopener noreferrer"
+          underline="hover"
+        >
+          CC BY 4.0
+        </Link>
+        )
+      </>
+    ),
+  },
 ];
 
 function VenuesWithMaps() {
   return (
     <Box>
-      <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold', pb: 4 }}>
+      <Typography variant="h4" component="h1" sx={{ fontWeight: "bold", pb: 4 }}>
         Venue Locations
       </Typography>
 
@@ -41,18 +55,29 @@ function VenuesWithMaps() {
               alignItems: "flex-start",
             }}
           >
-            <Box
-              component="img"
-              src={loc.image}
-              alt={loc.name}
-              sx={{
-                width: { xs: "100%", md: "50%" },
-                borderRadius: 2,
-                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)',
-                objectFit: "cover",
-                maxHeight: 350,
-              }}
-            />
+            <Box sx={{ width: { xs: "100%", md: "50%" } }}>
+              <Box
+                component="img"
+                src={loc.image}
+                alt={loc.name}
+                sx={{
+                  width: "100%",
+                  borderRadius: 2,
+                  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)",
+                  objectFit: "cover",
+                  maxHeight: 350,
+                }}
+              />
+              {loc.credit && (
+                <Typography
+                  variant="caption"
+                  display="block"
+                  sx={{ mt: 1, color: "text.secondary" }}
+                >
+                  {loc.credit}
+                </Typography>
+              )}
+            </Box>
             <Box
               component="iframe"
               src={loc.mapUrl}
@@ -61,7 +86,7 @@ function VenuesWithMaps() {
                 height: { xs: 300, md: 350 },
                 border: 0,
                 borderRadius: 2,
-                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)',
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)',
               }}
               loading="lazy"
               allowFullScreen

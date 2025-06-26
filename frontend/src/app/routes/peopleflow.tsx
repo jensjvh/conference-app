@@ -5,6 +5,7 @@ import {
   useTheme,
   useMediaQuery,
   Divider,
+  Link,
 } from "@mui/material";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
@@ -277,6 +278,33 @@ const DataDashboard: React.FC = () => {
     <Box sx={{ p: 4, bgcolor: '#f9fafb', minHeight: '100vh', padding:'1em' }}>
       <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 4, textAlign: 'center' }}>
         People Flow
+      </Typography>
+
+      <Box
+      component="img"
+      src={import.meta.env.BASE_URL + "img/pastieeeconf.jpg"}
+      alt="Past IEEE Conference"
+      sx={{
+        width: '100%',
+        height: 'auto',
+        objectFit: 'cover',
+        display: 'block',
+      }}
+      />
+
+      <Typography
+        variant="caption"
+        display="block"
+        sx={{ mt: 1, pb: 8, color: "text.secondary" }}
+      >
+          Jules van den Doel
+          <Link
+          href="https://creativecommons.org/licenses/by-nc-nd/2.0/deed.en"
+          target="_blank"
+          rel="noopener noreferrer"
+          underline="hover"
+          >(CC BY-NC-ND 2.0)</Link>
+      
       </Typography>
 
       <Box

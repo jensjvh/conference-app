@@ -76,7 +76,7 @@ const UsefulLinks = () => {
             title: "Public transport",
             link: "https://www.hsl.fi/en",
             description: "Helsinki Public Transport",
-            image: import.meta.env.BASE_URL + 'img/oodi.jpg',
+            image: import.meta.env.BASE_URL + 'img/tram.jpg',
         },
         {
             title: "Visiting Helsinki",
