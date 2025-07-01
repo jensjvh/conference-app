@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   Box,
   Typography,
-  useTheme,
-  useMediaQuery,
   Link,
 } from "@mui/material";
 
 // Main Component
 const PeopleFlow: React.FC = () => {
-  const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Box sx={{ p: 4, bgcolor: '#f9fafb', minHeight: '100vh', padding:'1em' }}>

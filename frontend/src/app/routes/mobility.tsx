@@ -5,7 +5,6 @@ import {
   useTheme,
   useMediaQuery,
   Divider,
-  Link,
 } from "@mui/material";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
