@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   Box,
   Typography,
@@ -203,8 +203,6 @@ const TimelineFacts = () => {
 
 // Main Component
 const History: React.FC = () => {
-  const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Box sx={{ p: 4, bgcolor: '#f9fafb', minHeight: '100vh', padding:'1em' }}>
