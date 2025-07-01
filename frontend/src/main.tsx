@@ -8,6 +8,7 @@ import UsefulLinks from './app/routes/links.tsx';
 import Program from './app/routes/program.tsx';
 import PeopleFlow from './app/routes/peopleflow.tsx';
 import Venues from './app/routes/venues.tsx';
+import MobilityInsights from './app/routes/mobility.tsx';
 import Layout from './components/Layout.tsx';
 import { ThemeProvider } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
@@ -37,6 +38,7 @@ ReactDOM.createRoot(root).render(
               <Route path="/program" element={<Program />} />
               <Route path="/peopleflow" element={<PeopleFlow />} />
               <Route path="/venues" element={<Venues />} />
+              <Route path="/mobility" element={<MobilityInsights />} />
             </Route>
           </Routes>
         </BrowserRouter>

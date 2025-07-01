@@ -230,7 +230,7 @@ const backend_url =
     : `${import.meta.env.BASE_URL}api/graphql-proxy`;
 
 // Main Component
-const PeopleFlow: React.FC = () => {
+const  MobilityInsights: React.FC = () => {
   const [stations, setStations] = useState<any[]>([]);
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));
@@ -277,52 +277,198 @@ const PeopleFlow: React.FC = () => {
   return (
     <Box sx={{ p: 4, bgcolor: '#f9fafb', minHeight: '100vh', padding:'1em' }}>
       <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 4, textAlign: 'center' }}>
-        People Flow
+       Mobility Insights
       </Typography>
 
       <Box
-      component="img"
-      src={import.meta.env.BASE_URL + "img/peopleflow.jpg"}
-      alt="People Flow"
-      sx={{
-        width: '100%',
-        height: 'auto',
-        objectFit: 'cover',
-        display: 'block',
-      }}
-      />
+        sx={{
+          display: "flex",
+          gap: 4,
+          flexWrap: "wrap",
+          justifyContent: "center",
+        }}
+      >
 
-      <Box sx={{ textAlign: 'center', mt: 2, mb: 6 }}>
+        <Box
+          sx={{
+            flex: "1 1 500px",
+            maxWidth: "600px",
+            width: "100%",
+            borderRadius: 3,
+            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)',
+            bgcolor: 'background.paper',
+            p: 2,
+          }}
+        >
+          <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2, textAlign: 'center' }}>
+            IEEE Conferences Over Time
+          </Typography>
+          <Divider />
+          <Box sx={{ mt: 2, height: 300 }}>
+            <LineChartComponent
+              label="Conferences"
+              dataPoints={data.map((d) => d.conferences)}
+              borderColor="rgba(25, 118, 210, 1)"
+            />
+          </Box>
+        </Box>
 
-        <Typography
-          variant="body1"
-          sx={{ mb: 6, color: "black", fontSize: "1.25rem", lineHeight: 1.6 }}
+        <Box
+          sx={{
+            flex: "1 1 500px",
+            maxWidth: "600px",
+            width: "100%",
+            borderRadius: 3,
+            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)',
+            bgcolor: 'background.paper',
+            p: 2,
+          }}
         >
-        The{" "}
-        <Link
-          href="https://megasense-server.cs.helsinki.fi/conference/"
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={{ fontWeight: 'bold', color: 'primary.main', textDecoration: 'none' }}
-        >
-          web app
-        </Link>{" "}
-        created by the Untangling People Flow team is designed to enhance conference experiences with seamless interaction. Meanwhile, the{" "}
-        <Link
-          href="https://untanglingpeopleflow.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={{ fontWeight: 'bold', color: 'primary.main', textDecoration: 'none' }}
-        >
-          Untangling People Flow consortium
-        </Link>{" "}
-        is dedicated to optimising people flow detection and improving environmental conditions. This collaborative effort supports Finnish business growth and promotes global sustainability with AI-driven forecasts. You may have experienced our innovations at Helsinki-Vantaa airport, and we encourage you to explore our other testbeds. Additionally, our AI planners help reduce food waste by optimizing menu choices for large organizations.​
+          <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2, textAlign: 'center' }}>
+            IEEE Conference Attendees Over Time
+          </Typography>
+          <Divider />
+          <Box sx={{ mt: 2, height: 300 }}>
+            <LineChartComponent
+              label="Attendees"
+              dataPoints={data.map((d) => d.attendees)}
+              borderColor="rgba(76, 175, 80, 1)"
+            />
+          </Box>
+        </Box>
+      </Box>
+
+      <Typography sx={{ mt: 4, textAlign: "center" }} variant="caption">
+        Source: IEEE Annual Reports
       </Typography>
-    
+
+      <Box sx={{ mt: 8, width: '100%', overflow: 'hidden' }}>
+  <Typography
+    variant="h6"
+    sx={{
+      fontWeight: 'bold',
+      mb: 3,
+      textAlign: 'center',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 1,
+    }}
+  >
+    <img src={import.meta.env.BASE_URL + 'img/bike-svgrepo-com.svg'} alt="Bike" style={{ width: 28, height: 28 }} />
+    Live HSL Bike Map
+  </Typography>
+
+  <Box
+    sx={{
+      display: 'flex',
+      flexDirection: isSmall ? 'column' : 'row',
+      gap: 4,
+      justifyContent: 'center',
+      alignItems: 'stretch',
+      maxWidth: '100%', // Prevent horizontal overflow
+      mx: 'auto',
+    }}
+  >
+    {/* Map Container - Fixed */}
+    <Box
+      sx={{
+        flex: 1.3,
+        minWidth: isSmall ? '100%' : 300, // Full width on small screens
+        maxWidth: isSmall ? '100%' : 'none', // Prevent overflow on small screens
+        borderRadius: 3,
+        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)',
+        bgcolor: 'background.paper',
+        p: 2,
+      }}
+    >
+      <Box 
+        sx={{ 
+          height: 400, 
+          mt: 0, 
+          borderRadius: 3, 
+          overflow: 'hidden',
+          width: '100%', // Ensure full width usage
+          position: 'relative', // For proper leaflet positioning
+        }}
+      >
+        <MapContainer 
+          center={[60.171, 24.951]} 
+          zoom={15} 
+          style={{ 
+            height: '100%', 
+            width: '100%',
+            borderRadius: '12px' // Match parent border radius
+          }}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution="&copy; OpenStreetMap contributors"
+          />
+          {stations.map((station) => (
+            <Marker key={station.stationId} position={[station.lat, station.lon]}>
+              <Popup>
+                <strong>{station.name}</strong>
+                <br />
+                {station.allowPickup ? 'Pickup allowed' : 'Pickup not allowed'}
+                <ul style={{ margin: 0, paddingLeft: '16px' }}>
+                  {station.availableVehicles.byType.map((vehicle: Vehicle, idx: number) => (
+                    <li key={idx}>
+                      {vehicle.count} {vehicle.vehicleType.formFactor.toLowerCase()}(s)
+                    </li>
+                  ))}
+                </ul>
+              </Popup>
+            </Marker>
+          ))}
+        </MapContainer>
+      </Box>
     </Box>
 
+    {/* Image Container - Fixed */}
+    <Box
+      sx={{
+        flex: 1,
+        minWidth: isSmall ? '100%' : 300, // Full width on small screens
+        maxWidth: isSmall ? '100%' : 'none', // Prevent overflow on small screens
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 2,
+        bgcolor: 'background.paper',
+        borderRadius: 3,
+        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)',
+        p: 2,
+      }}
+    >
+      <Box
+        component="img"
+        src={import.meta.env.BASE_URL + "img/Bikes.jpg"}
+        alt="Bikes"
+        sx={{
+          width: '100%',
+          height: 400,
+          objectFit: 'cover',
+          borderRadius: 2,
+          maxWidth: '100%', // Prevent image overflow
+        }}
+      />
+      <Typography variant="subtitle1" sx={{ fontStyle: 'italic', textAlign: 'center' }}>
+        HSL offers bikes for sustainable travel
+      </Typography>
+    </Box>
+  </Box>
+</Box>
+
+
+      <TimelineFacts />
+
+      <Typography sx={{ mt: 4, textAlign: "center" }} variant="caption">
+        Source: IEEE Annual Reports
+      </Typography>
     </Box>
   );
 };
 
-export default PeopleFlow;
+export default  MobilityInsights;

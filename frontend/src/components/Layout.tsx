@@ -67,7 +67,7 @@ const Layout = () => {
               setIsSidebarOpen(false);
             }}
           >
-            <ListItemText primary="Map" />
+            <ListItemText primary="Conference Map" />
           </ListItemButton>
           <ListItemButton
             onClick={() => {
@@ -75,7 +75,7 @@ const Layout = () => {
               setIsSidebarOpen(false);
             }}
           >
-            <ListItemText primary="Venues" />
+            <ListItemText primary="Venue Locations" />
           </ListItemButton>
           <ListItemButton
             onClick={() => {
@@ -93,14 +93,37 @@ const Layout = () => {
           >
             <ListItemText primary="People Flow" />
           </ListItemButton>
+           <ListItemButton
+            onClick={() => {
+              navigate("/mobility");
+              setIsSidebarOpen(false);
+            }}
+          >
+            <ListItemText primary="Mobility Insights" />
+          </ListItemButton>
         </List>
       </Drawer>
 
       {/* Main Content */}
+      
       <Container style={{ marginTop: "5rem", paddingBottom: "2rem" }}>
         <Outlet />
+        <div 
+          style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '0.5rem', 
+            justifyContent: 'center',  
+            marginTop: '1rem'           
+          }}
+        >
+          <img src="./img/logoUH.png" alt="Logo UH" style={{ height: 95 }} />
+          <img src="./img/logoUPF.png" alt="Logo UPF" style={{ height: 70 }} />
+        </div>
       </Container>
+
     </div>
+
   );
 };
 

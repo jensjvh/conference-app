@@ -328,7 +328,7 @@ function ConferenceMap({ floor = 1 }: MapProps) {
   return (
     <Box sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
       <Typography variant="h4" component="h1" sx={{ fontWeight: "bold", pb: 2 }}>
-        Venue Map
+        Conference Map
       </Typography>
       <Box
         sx={{

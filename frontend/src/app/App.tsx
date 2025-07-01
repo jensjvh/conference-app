@@ -82,7 +82,7 @@ function App() {
                 }
               }}
             >
-              Venues
+              Venue Locations
             </Button>
             <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
             <Button
@@ -116,7 +116,7 @@ function App() {
                 }
               }}
             >
-              People flow
+              People Flow
             </Button>
           </Box>
         ) : (
@@ -148,7 +148,7 @@ function App() {
                 }
               }}
             >
-              Map
+              Conference Map
             </Button>
             <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
             <Button
@@ -163,7 +163,7 @@ function App() {
                 }
               }}
             >
-              Venues
+              Venue Locations
             </Button>
             <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
             <Button
@@ -193,7 +193,7 @@ function App() {
                 }
               }}
             >
-              People flow
+              People Flow
             </Button>
           </>
         )}
