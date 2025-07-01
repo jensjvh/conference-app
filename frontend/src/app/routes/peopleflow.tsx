@@ -5,6 +5,8 @@ import {
   Link,
 } from "@mui/material";
 
+import BikeMap from '../../components/BikeMap';
+
 // Main Component
 const PeopleFlow: React.FC = () => {
 
@@ -51,6 +53,13 @@ const PeopleFlow: React.FC = () => {
           </Link>{" "}
           is dedicated to optimising people flow detection and improving environmental conditions. This collaborative effort supports Finnish business growth and promotes global sustainability with AI-driven forecasts. You may have experienced our innovations at Helsinki-Vantaa airport, and we encourage you to explore our other testbeds. Additionally, our AI planners help reduce food waste by optimizing menu choices for large organizations.​
         </Typography>
+          <Typography
+          variant="body1"
+          sx={{ mb: 6, color: "black", fontSize: "1.25rem", lineHeight: 1.6 }}
+        >
+        We encourage you to make the most of your time in Helsinki by choosing sustainable ways to get around. If you enjoy cycling, check out the live HSL bike map here:
+        </Typography>
+        <BikeMap />
       </Box>
     </Box>
   );

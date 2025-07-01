@@ -8,7 +8,10 @@ import {
   List,
   ListItemText,
   ListItemButton,
-  Container
+  Container,
+  Link,
+  Box,
+  Typography
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
@@ -28,13 +31,12 @@ const Layout = () => {
             <MenuIcon />
           </Button>
           <Button
-        color="secondary"
-        onClick={() => navigate('/')}
-        style={{ textTransform: 'none' }} 
-      >
-        IEEE SERVICES 2025
-      </Button>
-
+            color="secondary"
+            onClick={() => navigate('/')}
+            style={{ textTransform: 'none' }} 
+          >
+            IEEE SERVICES 2025
+          </Button>
         </Toolbar>
       </AppBar>
 
@@ -95,35 +97,48 @@ const Layout = () => {
           </ListItemButton>
            <ListItemButton
             onClick={() => {
-              navigate("/mobility");
+              navigate("/history");
               setIsSidebarOpen(false);
             }}
           >
-            <ListItemText primary="Mobility Insights" />
+            <ListItemText primary="IEEE History" />
           </ListItemButton>
         </List>
       </Drawer>
 
       {/* Main Content */}
-      
-      <Container style={{ marginTop: "5rem", paddingBottom: "2rem" }}>
-        <Outlet />
-        <div 
-          style={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            gap: '0.5rem', 
-            justifyContent: 'center',  
-            marginTop: '1rem'           
-          }}
-        >
-          <img src="./img/logoUH.png" alt="Logo UH" style={{ height: 95 }} />
-          <img src="./img/logoUPF.png" alt="Logo UPF" style={{ height: 70 }} />
-        </div>
-      </Container>
+    <Container style={{ marginTop: "5rem", paddingBottom: "2rem", textAlign: "center" }}>
+  <Outlet />
+  
+  <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mb: 2, mt: 10 }}>
+    <img src="./img/logoUH.png" alt="Logo UH" style={{ height: 95 }} />
+    <img src="./img/logoUPF.png" alt="Logo UPF" style={{ height: 70 }} />
+  </Box>
+
+  <Typography 
+    variant="body1" 
+    sx={{ 
+      maxWidth: 600, 
+      margin: "0 auto", 
+      pt: 2,  
+      mb: 2 
+    }}
+  >
+    This web link runs on the MegaSense Research platform. MegaSense Oy is a University of Helsinki spinout pioneering environmental sensing and high-resolution analytics for cities and the built environment.{" "}
+    <Link href="https://megasense.com" target="_blank" rel="noopener" underline="hover">
+      Stay connected with us!
+    </Link>
+  </Typography>
+
+  <Box sx={{ display: "flex", justifyContent: "center" }}>
+    <Link href="https://megasense.com" target="_blank" rel="noopener">
+      <img src="./img/logoMegasense.png" alt="MegaSense Logo" style={{ height: 70 }} />
+    </Link>
+  </Box>
+</Container>
+
 
     </div>
-
   );
 };
 
