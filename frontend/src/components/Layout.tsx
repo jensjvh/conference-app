@@ -105,16 +105,15 @@ const Layout = () => {
       </Drawer>
 
       {/* Main Content */}
-    <Container style={{ marginTop: "5rem", paddingBottom: "2rem", textAlign: "center" }}>
+    <Container style={{ marginTop: "6rem", paddingBottom: "2rem", textAlign: "center" }}>
   <Outlet />
   
-  <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mb: 2, mt: 10 }}>
-    <img src="./img/logoMegasense.png" alt="Megasense" style={{ height: 70 }} />
+  <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mb: 20, mt: 10 }}>
+    <img src="./img/logoMegasense.png" alt="Megasense" style={{ height: 70 }}   />
     <img src="./img/logoUH.png" alt="Helsinki University" style={{ height: 95 }} />
     <img src="./img/logoUPF.png" alt="Untangling People Flow" style={{ height: 70 }} />
    
   </Box>
-
 
 </Container>
 
