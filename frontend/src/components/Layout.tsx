@@ -9,9 +9,7 @@ import {
   ListItemText,
   ListItemButton,
   Container,
-  Link,
   Box,
-  Typography
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
