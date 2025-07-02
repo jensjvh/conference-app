@@ -111,30 +111,13 @@ const Layout = () => {
   <Outlet />
   
   <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mb: 2, mt: 10 }}>
-    <img src="./img/logoUH.png" alt="Logo UH" style={{ height: 95 }} />
-    <img src="./img/logoUPF.png" alt="Logo UPF" style={{ height: 70 }} />
+    <img src="./img/logoMegasense.png" alt="Megasense" style={{ height: 70 }} />
+    <img src="./img/logoUH.png" alt="Helsinki University" style={{ height: 95 }} />
+    <img src="./img/logoUPF.png" alt="Untangling People Flow" style={{ height: 70 }} />
+   
   </Box>
 
-  <Typography 
-    variant="body1" 
-    sx={{ 
-      maxWidth: 600, 
-      margin: "0 auto", 
-      pt: 2,  
-      mb: 2 
-    }}
-  >
-    This web link runs on the MegaSense Research platform. MegaSense Oy is a University of Helsinki spinout pioneering environmental sensing and high-resolution analytics for cities and the built environment.{" "}
-    <Link href="https://megasense.com" target="_blank" rel="noopener" underline="hover">
-      Stay connected with us!
-    </Link>
-  </Typography>
 
-  <Box sx={{ display: "flex", justifyContent: "center" }}>
-    <Link href="https://megasense.com" target="_blank" rel="noopener">
-      <img src="./img/logoMegasense.png" alt="MegaSense Logo" style={{ height: 70 }} />
-    </Link>
-  </Box>
 </Container>
 
 

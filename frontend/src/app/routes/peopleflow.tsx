@@ -38,7 +38,8 @@ const PeopleFlow: React.FC = () => {
             href="https://megasense-server.cs.helsinki.fi/conference/"
             target="_blank"
             rel="noopener noreferrer"
-            sx={{ fontWeight: 'bold', color: 'primary.main', textDecoration: 'underline' }}
+            underline="hover" 
+            sx={{ fontWeight: 'bold', color: 'primary.main', textDecoration: 'none' }}
           >
             web app
           </Link>{" "}
@@ -47,7 +48,8 @@ const PeopleFlow: React.FC = () => {
             href="https://untanglingpeopleflow.com/"
             target="_blank"
             rel="noopener noreferrer"
-            sx={{ fontWeight: 'bold', color: 'primary.main', textDecoration: 'underline' }}
+            underline="hover" 
+            sx={{ fontWeight: 'bold', color: 'primary.main', textDecoration: 'none' }}
           >
             Untangling People Flow consortium
           </Link>{" "}
@@ -61,6 +63,15 @@ const PeopleFlow: React.FC = () => {
         </Typography>
         <BikeMap />
       </Box>
+           <Typography
+          variant="body1"
+          sx={{ mb: 6, color: "black", fontSize: "1.25rem", lineHeight: 1.6 }}
+        >
+        This web link runs on the MegaSense Research platform. MegaSense Oy is a University of Helsinki spinout pioneering environmental sensing and high-resolution analytics for cities and the built environment.{" "}
+        <Link href="https://megasense.com" target="_blank" rel="noopener" underline="hover" sx={{ fontWeight: 'bold', color: 'primary.main', textDecoration: 'none' }}>
+          Stay connected with us!
+        </Link>
+      </Typography>
     </Box>
   );
 };
