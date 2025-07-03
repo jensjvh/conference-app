@@ -79,6 +79,14 @@ const Layout = () => {
           </ListItemButton>
           <ListItemButton
             onClick={() => {
+              navigate("/awards-gallery");
+              setIsSidebarOpen(false);
+            }}
+          >
+            <ListItemText primary="Awards & Gallery" />
+          </ListItemButton>
+          <ListItemButton
+            onClick={() => {
               navigate("/links");
               setIsSidebarOpen(false);
             }}
