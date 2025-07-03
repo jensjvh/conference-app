@@ -8,13 +8,13 @@
     { "value": "saturday", "label": "Saturday, July 12", "date": "Saturday, July 12" }
   ],
   "roomHeaders": [
-    { "name": "FastCon WS", "room": "U3032" },
+    { "name": "FastCon WS", "room": "F2089" },
     { "name": "GraphD Symp", "room": "F3010" },
     { "name": "Sus/Res Symp", "room": "F3010" },
     { "name": "QSW Symp", "room": "F3020" },
     { "name": "SSEedu Symp/WISC Symp", "room": "F3005" },
     { "name": "ICWS", "room": "F2044" },
-    { "name": "ICWS", "room": "U3032" },
+    { "name": "ICWS", "room": "F2089" },
     { "name": "ICWS", "room": "F3010" },
     { "name": "CLOUD", "room": "F4050" },
     { "name": "EDGE", "room": "F3003" },
@@ -33,7 +33,7 @@
       {
         "time": "09:00 - 10:10",
         "sessions": [
-          { "name": "FCON-WS-S1", "room": "U3032"},
+          { "name": "FCON-WS-S1", "room": "F2089"},
           { "name": "CWS-SYM-S1", "room": "F3010" },
           { "name": "QSW-SYM-S1", "room": "F3020" }
         ]
@@ -47,7 +47,7 @@
       {
         "time": "10:30 - 11:40",
         "sessions": [
-          { "name": "FCON-WS-S2", "room": "U3032" },
+          { "name": "FCON-WS-S2", "room": "F2089" },
           { "name": "CWS-SYM-S2", "room": "F3010" },
           { "name": "QSW-SYM-S2", "room": "F3020" }
         ]
@@ -55,7 +55,7 @@
       {
         "time": "11:40 - 12:50",
         "sessions": [
-          { "name": "FCON-WS-S3", "room": "U3032" },
+          { "name": "FCON-WS-S3", "room": "F2089" },
           { "name": "QSW-SYM-S3", "room": "F3020" }
         ]
       },
@@ -68,7 +68,6 @@
       {
         "time": "14:00 - 15:10",
         "sessions": [
-          { "name": "FCON-WS-S4", "room": "U3032" },
           { "name": "QSW-SYM-S4", "room": "F3020" },
           { "name": "WISC-SYM-S1", "room": "F3005" }
         ]
@@ -82,7 +81,6 @@
       {
         "time": "15:30 - 16:40",
         "sessions": [
-          { "name": "FCON-WS-S5", "room": "U3032" },
           { "name": "WISC-SYM-S2", "room": "F3005" }
         ]
       }
@@ -116,9 +114,8 @@
         "time": "10:50 - 12:00",
         "sessions": [
           { "name": "CWS-CON-S1", "room": "F2044" },
-          { "name": "CWS-CON-S2", "room": "U3032" },
+          { "name": "CWS-CON-S2", "room": "F2089" },
           { "name": "CLD-CON-S1", "room": "F4050" },
-          { "name": "EDG-CON-S1", "room": "F3003" },
           { "name": "ICDH-CON-S1", "room": "F3017" },
           { "name": "SSE-CON-S1", "room": "F3020" }
         ]
@@ -139,9 +136,8 @@
         "time": "13:40 - 14:50",
         "sessions": [
           { "name": "CWS-CON-S3", "room": "F2044" },
-          { "name": "CWS-CON-S4", "room": "U3032" },
+          { "name": "CWS-CON-S4", "room": "F2089" },
           { "name": "Keynote", "room": "F4050" },
-          { "name": "EDG-CON-S2", "room": "F3003" },
           { "name": "ICDH-CON-S2", "room": "F3017" },
           { "name": "SSE-CON-S2", "room": "F3020" }
         ]
@@ -158,6 +154,7 @@
           { "name": "ICWS Keynote", "room": "F2044" },
           { "name": "CLD-CON-S2", "room": "F4050" },
           { "name": "EDG-CON-S3", "room": "F3003" },
+          { "name": "QSW-CON-S1", "room": "F3020" },
           { "name": "ICDH-CON-S3", "room": "F3017" },
           { "name": "SSE-CON-S3", "room": "F3020" }
         ]
@@ -192,9 +189,9 @@
         "time": "08:30 - 09:40",
         "sessions": [
           { "name": "CWS-CON-S5", "room": "F2044" },
-          { "name": "CWS-CON-S6", "room": "U3032" },
+          { "name": "CWS-CON-S6", "room": "F2089" },
           { "name": "CLD-CON-S3", "room": "F4050" },
-          { "name": "EDG-CON-S4", "room": "F3003" },
+          { "name": "EDG-CON-S1", "room": "F3003" },
           { "name": "QSW-CON-S1", "room": "F3020" },
           { "name": "ICDH-CON-S4", "room": "F3017" },
           { "name": "SSE-CON-S4", "room": "F3020" }
@@ -228,9 +225,9 @@
         "time": "13:40 - 14:50",
         "sessions": [
           { "name": "CWS-CON-S7", "room": "F2044" },
-          { "name": "CWS-CON-S8", "room": "U3032" },
+          { "name": "CWS-CON-S8", "room": "F2089" },
           { "name": "Keynote", "room": "F4050" },
-          { "name": "EDG-CON-S5", "room": "F3003" },
+          { "name": "EDG-CON-S2", "room": "F3003" },
           { "name": "QSW-CON-S2", "room": "F3020" },
           { "name": "ICDH-CON-S5", "room": "F3017" },
           { "name": "SSE-CON-S5", "room": "F3020" }
@@ -247,7 +244,7 @@
         "sessions": [
           { "name": "ICWS Panel", "room": "F2044" },
           { "name": "CLD-CON-S4", "room": "F4050" },
-          { "name": "EDG-CON-S6", "room": "F3003" },
+          { "name": "EDG-CON-S3", "room": "F3003" },
           { "name": "QSW-CON-S3", "room": "F3020" },
           { "name": "ICDH-CON-S6", "room": "F3017" },
           { "name": "SSE-CON-S6", "room": "F3020" }
@@ -257,9 +254,9 @@
         "time": "16:20 - 17:30",
         "sessions": [
           { "name": "CWS-CON-S9", "room": "F2044" },
-          { "name": "CWS-CON-S10", "room": "U3032" },
+          { "name": "CWS-CON-S10", "room": "F2089" },
           { "name": "CLD-CON-S5", "room": "F4050" },
-          { "name": "EDG-CON-S7", "room": "F3003" },
+          { "name": "EDG-CON-S4", "room": "F3003" },
           { "name": "QSW-CON-S4", "room": "F3020" },
           { "name": "ICDH-CON-S7", "room": "F3017" },
           { "name": "SSE-CON-S7", "room": "F3020" }
@@ -276,14 +273,14 @@
       {
         "time": "08:30 - 09:40",
         "sessions": [
-          { "name": "SUS-SYM-S1", "room": "F3010" },
           { "name": "SSEedu-SYM-S1", "room": "F3005" },
           { "name": "CWS-CON-S11", "room": "F2044" },
-          { "name": "CWS-CON-S12", "room": "U3032" },
+          { "name": "CWS-CON-S12", "room": "F2089" },
           { "name": "CLD-CON-S6", "room": "F4050" },
           { "name": "QSW-CON-S5", "room": "F3020" },
           { "name": "ICDH-CON-S8", "room": "F3017" },
-          { "name": "SSE-CON-S8", "room": "F3020" }
+          { "name": "SSE-CON-S8", "room": "F3020" },
+          { "name": "EDG-CON-S5", "room": "F3003" }
         ]
       },
       {
@@ -301,14 +298,14 @@
       {
         "time": "11:10 - 12:20",
         "sessions": [
-          { "name": "SUS-SYM-S2", "room": "F3010" },
           { "name": "SSEedu-SYM-S2", "room": "F3005" },
           { "name": "CWS-CON-S13", "room": "F2044" },
-          { "name": "CWS-CON-S14", "room": "U3032" },
+          { "name": "CWS-CON-S14", "room": "F2089" },
           { "name": "CLD-CON-S7", "room": "F4050" },
           { "name": "QSW-CON-S6", "room": "F3020" },
           { "name": "ICDH-CON-S9", "room": "F3017" },
-          { "name": "SSE-CON-S9", "room": "F3020" }
+          { "name": "SSE-CON-S9", "room": "F3020" },
+          { "name": "EDG-CON-S6", "room": "F3003" }
         ]
       },
       {
@@ -328,11 +325,12 @@
         "sessions": [
           { "name": "SSEedu-SYM-S3", "room": "F3005" },
           { "name": "CWS-CON-S15", "room": "F2044" },
-          { "name": "CWS-CON-S16", "room": "U3032" },
+          { "name": "CWS-CON-S16", "room": "F2089" },
           { "name": "Keynote", "room": "F4050" },
           { "name": "QSW-CON-S7", "room": "F3020" },
           { "name": "ICDH-CON-S10", "room": "F3017" },
-          { "name": "SSE-CON-S10", "room": "F3020" }
+          { "name": "SSE-CON-S10", "room": "F3020" },
+          { "name": "EDG-CON-S7", "room": "F3003" }
         ]
       },
       {
@@ -347,7 +345,8 @@
           { "name": "SSEedu-SYM-S4", "room": "F3005" },
           { "name": "ICWS Keynote", "room": "F2044" },
           { "name": "CLD-CON-S8", "room": "F4050" },
-          { "name": "QSW-CON-S8", "room": "F3020" }
+          { "name": "QSW-CON-S8", "room": "F3020" },
+          { "name": "EDG-CON-S8", "room": "F3003" }
         ]
       },
       {
@@ -369,7 +368,7 @@
         "sessions": [
           { "name": "SSEedu-SYM-S5", "room": "F3005" },
           { "name": "CWS-CON-S17", "room": "F2044" },
-          { "name": "CWS-CON-S18", "room": "U3032" },
+          { "name": "CWS-CON-S18", "room": "F2089" },
           { "name": "CWS-CON-S19", "room": "F3010" },
           { "name": "CLD-CON-S9", "room": "F4050" },
           { "name": "QSW-CON-S9", "room": "F3020" }
@@ -392,7 +391,7 @@
         "sessions": [
           { "name": "SSEedu-SYM-S6", "room": "F3005" },
           { "name": "CWS-CON-S20", "room": "F2044" },
-          { "name": "CWS-CON-S21", "room": "U3032" },
+          { "name": "CWS-CON-S21", "room": "F2089" },
           { "name": "CWS-CON-S22", "room": "F3010" },
           { "name": "CLD-CON-S10", "room": "F4050" },
           { "name": "QSW-CON-S10", "room": "F3020" }
@@ -415,7 +414,7 @@
         "sessions": [
           { "name": "SSEedu-SYM-S7", "room": "F3005" },
           { "name": "CWS-CON-S23", "room": "F2044" },
-          { "name": "CWS-CON-S24", "room": "U3032" },
+          { "name": "CWS-CON-S24", "room": "F2089" },
           { "name": "CWS-CON-S25", "room": "F3010" },
           { "name": "CLD-CON-S11", "room": "F4050" }
         ]
@@ -430,7 +429,7 @@
         "time": "15:10 - 16:20",
         "sessions": [
           { "name": "CWS-CON-S26", "room": "F2044" },
-          { "name": "CWS-CON-S27", "room": "U3032" },
+          { "name": "CWS-CON-S27", "room": "F2089" },
           { "name": "CWS-CON-S28", "room": "F3010" },
           { "name": "CLD-CON-S12", "room": "F4050" }
         ]
@@ -439,9 +438,10 @@
         "time": "16:20 - 17:30",
         "sessions": [
           { "name": "CWS-CON-S29", "room": "F2044" },
-          { "name": "CWS-CON-S30", "room": "U3032" },
+          { "name": "CWS-CON-S30", "room": "F2089" },
           { "name": "CWS-CON-S31", "room": "F3010" },
-          { "name": "CLD-CON-S13", "room": "F4050" }
+          { "name": "CLD-CON-S13", "room": "F4050" },
+          { "name": "CLD-CON-S14", "room": "F4050" }
         ]
       }
     ],
@@ -450,9 +450,8 @@
         "time": "08:30 - 09:40",
         "sessions": [
           { "name": "CWS-CON-S32", "room": "F2044" },
-          { "name": "CWS-CON-S33", "room": "U3032" },
-          { "name": "CWS-CON-S34", "room": "F3010" },
-          { "name": "CLD-CON-S14", "room": "F4050" }
+          { "name": "CWS-CON-S33", "room": "F2089" },
+          { "name": "CWS-CON-S34", "room": "F3010" }
         ]
       },
       {
@@ -464,17 +463,17 @@
       {
         "time": "10:00 - 11:10",
         "sessions": [
-          { "name": "CWS-CON-S35", "room": "F2044" },
-          { "name": "CWS-CON-S36", "room": "U3032" },
-          { "name": "CWS-CON-S37", "room": "F3010" }
+          { "name": "CWS-CON-", "room": "F2044" },
+          { "name": "CWS-CON-", "room": "F2089" },
+          { "name": "CWS-CON-", "room": "F3010" }
         ]
       },
       {
         "time": "11:10 - 12:20",
         "sessions": [
-          { "name": "CWS-CON-S38", "room": "F2044" },
-          { "name": "CWS-CON-S39", "room": "U3032" },
-          { "name": "CWS-CON-S40", "room": "F3010" }
+          { "name": "CWS-CON-", "room": "F2044" },
+          { "name": "CWS-CON-", "room": "F2089" },
+          { "name": "CWS-CON-", "room": "F3010" }
         ]
       },
       {

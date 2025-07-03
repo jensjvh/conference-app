@@ -167,6 +167,21 @@ function App() {
             </Button>
             <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
             <Button
+              onClick={() => navigate("/awards-gallery")}
+              color="primary"
+              sx={{
+                fontSize: '1.1rem',
+                fontWeight: 'medium',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                  textDecoration: 'underline',
+                }
+              }}
+            >
+             Awards & Gallery
+            </Button>
+            <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
+            <Button
               onClick={() => navigate("/links")}
               color="primary"
               sx={{
@@ -195,6 +210,22 @@ function App() {
             >
               People Flow
             </Button>
+            <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
+            <Button
+              onClick={() => navigate("/history")}
+              color="primary"
+              sx={{
+                fontSize: '1.1rem',
+                fontWeight: 'medium',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                  textDecoration: 'underline',
+                }
+              }}
+            >
+              IEEE History
+            </Button>
+              
           </>
         )}
       </Box>
