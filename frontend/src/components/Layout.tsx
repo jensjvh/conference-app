@@ -91,7 +91,7 @@ const Layout = () => {
               setIsSidebarOpen(false);
             }}
           >
-            <ListItemText primary="Visiting Helsinki" />
+            <ListItemText primary="Pre-Reception Helsinki Walking Tour" />
           </ListItemButton>
           <ListItemButton
             onClick={() => {

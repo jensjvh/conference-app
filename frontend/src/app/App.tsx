@@ -193,7 +193,7 @@ function App() {
                 }
               }}
             >
-              Visiting Helsinki
+              Pre-Reception Helsinki Walking Tour
             </Button>
             <Divider orientation="vertical" flexItem sx={{ mx: 1, backgroundColor: theme.palette.secondary.main }} />
             <Button
