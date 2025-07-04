@@ -8,15 +8,16 @@
     { "value": "saturday", "label": "Saturday, July 12", "date": "Saturday, July 12" }
   ],
   "roomHeaders": [
-    { "name": "FastCon WS", "room": "F2089" },
-    { "name": "GraphD Symp", "room": "F3010" },
-    { "name": "Sus/Res Symp", "room": "F3010" },
+    { "name": "FastCon WS", "room": "F3010" },
+    { "name": "GraphD Symp", "room": "F2089" },
+    { "name": "Sus/Res Symp", "room": "F3003" },
     { "name": "QSW Symp", "room": "F3020" },
     { "name": "SSEedu Symp/WISC Symp", "room": "F3005" },
     { "name": "ICWS", "room": "F2044" },
     { "name": "ICWS", "room": "F2089" },
     { "name": "ICWS", "room": "F3010" },
     { "name": "CLOUD", "room": "F4050" },
+    { "name": "CLOUD", "room": "F3020" },
     { "name": "EDGE", "room": "F3003" },
     { "name": "QSW", "room": "F3020" },
     { "name": "ICDH", "room": "F3017" },
@@ -28,13 +29,13 @@
         "time": "08:00 - 16:00",
         "type": "registration",
         "content": "Registration",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "09:00 - 10:10",
         "sessions": [
-          { "name": "FCON-WS-S1", "room": "F2089"},
-          { "name": "CWS-SYM-S1", "room": "F3010" },
+          { "name": "FCON-WS-S1", "room": "F3010"},
+          { "name": "CWS-SYM-S1", "room": "F2089" },
           { "name": "QSW-SYM-S1", "room": "F3020" }
         ]
       },
@@ -42,20 +43,20 @@
         "time": "10:10 - 10:30",
         "type": "break",
         "breakText": "Coffee Break (2nd floor)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "10:30 - 11:40",
         "sessions": [
-          { "name": "FCON-WS-S2", "room": "F2089" },
-          { "name": "CWS-SYM-S2", "room": "F3010" },
+          { "name": "FCON-WS-S2", "room": "F3010" },
+          { "name": "CWS-SYM-S2", "room": "F2089" },
           { "name": "QSW-SYM-S2", "room": "F3020" }
         ]
       },
       {
         "time": "11:40 - 12:50",
         "sessions": [
-          { "name": "FCON-WS-S3", "room": "F2089" },
+          { "name": "FCON-WS-S3", "room": "F3010" },
           { "name": "QSW-SYM-S3", "room": "F3020" }
         ]
       },
@@ -63,7 +64,7 @@
         "time": "12:50 - 14:00",
         "type": "lunch",
         "content": "Lunch Break. Lunch Provided at the Conference Venue",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "14:00 - 15:10",
@@ -76,7 +77,7 @@
         "time": "15:10 - 15:30",
         "type": "break",
         "breakText": "Coffee Break (2nd floor)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "15:30 - 16:40",
@@ -90,25 +91,25 @@
         "time": "08:00 - 16:00",
         "type": "registration",
         "content": "Registration",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "09:00 - 09:20",
         "type": "opening",
         "content": "Congress Opening Session (9:00 - 9:20)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "09:20 - 10:30",
         "type": "keynote",
         "content": "Plenary I: The Limits of Cloud Computing and the Emergence of Edge Computing, Mahadev Satyanarayanan (9:20 - 10:30) | Auditorium (F2044)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "10:30 - 10:50",
         "type": "break",
         "breakText": "Coffee Break (2nd floor and 3rd floor)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "10:50 - 12:00",
@@ -124,13 +125,13 @@
         "time": "12:00 - 12:30",
         "type": "networking",
         "content": "Networking Session (Agora, Fabian, and Fuksi areas)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "12:30 - 13:40",
         "type": "lunch",
         "content": "Lunch Break. Lunch Provided at the Conference Venue",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "13:40 - 14:50",
@@ -146,15 +147,13 @@
         "time": "14:50 - 15:10",
         "type": "break",
         "breakText": "Coffee Break (2nd floor and 3rd floor)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "15:10 - 16:20",
         "sessions": [
           { "name": "ICWS Keynote", "room": "F2044" },
           { "name": "CLD-CON-S2", "room": "F4050" },
-          { "name": "EDG-CON-S3", "room": "F3003" },
-          { "name": "QSW-CON-S1", "room": "F3020" },
           { "name": "ICDH-CON-S3", "room": "F3017" },
           { "name": "SSE-CON-S3", "room": "F3020" }
         ]
@@ -163,19 +162,19 @@
         "time": "16:40 - 18:00",
         "type": "tour-prep",
         "content": "No Coffee Break - Break time to gather and group in preparation for starting the Walking Tour",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "18:00-19:30",
         "type": "tour",
         "content": "Cultural & Historic Tour (Walking tour to the Senate Square & Helsinki Cathedral, and for those interested, the Old Market Hall)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "18:00-19:30",
         "type": "reception",
         "content": "Reception: Helsinki City Hall, Banquet Hall, Pohjoisesplanadi 11-13",
-        "spans": 13
+        "spans": 14
       }
     ],
     "wednesday": [
@@ -183,7 +182,7 @@
         "time": "08:00 - 16:00",
         "type": "registration",
         "content": "Registration",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "08:30 - 09:40",
@@ -201,25 +200,25 @@
         "time": "09:40 - 10:50",
         "type": "keynote",
         "content": "Plenary Keynote II: Services with UNEXT - What You Need, is What You Get, Azimeh Sefidcon | Auditorium (F2044)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "11:10 - 12:20",
         "type": "keynote",
         "content": "Plenary Keynote III: Balancing the Trilemma: A Unified Approach for Cost-Effective, Energy-Efficient and Performant LLM Serving, Tamar Eilam | Auditorium (F2044)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "12:20 - 12:30",
         "type": "networking",
         "content": "Networking Session (Agora, Fabian, and Fuksi areas)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "12:30 - 13:40",
         "type": "lunch",
         "content": "Lunch Break. Lunch Provided at the Conference Venue",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "13:40 - 14:50",
@@ -237,7 +236,7 @@
         "time": "14:50 - 15:10",
         "type": "break",
         "breakText": "Coffee Break (2nd floor and 3rd floor)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "15:10 - 16:20",
@@ -268,7 +267,7 @@
         "time": "08:00 - 16:00",
         "type": "registration",
         "content": "Registration",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "08:30 - 09:40",
@@ -287,13 +286,13 @@
         "time": "09:40 - 10:50",
         "type": "keynote",
         "content": "Plenary Keynote 4: PCU - The New Health Service Architecture, Ramesh Jain | Auditorium (F2044)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "10:50 - 11:10",
         "type": "break",
         "breakText": "Coffee Break (2nd floor and 3rd floor)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "11:10 - 12:20",
@@ -312,13 +311,13 @@
         "time": "12:20 - 12:30",
         "type": "networking",
         "content": "Networking Session (Agora, Fabian, and Fuksi areas)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "12:30 - 13:40",
         "type": "lunch",
         "content": "Lunch Break. Lunch Provided at the Conference Venue",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "13:40 - 14:50",
@@ -337,7 +336,7 @@
         "time": "14:50 - 15:10",
         "type": "break",
         "breakText": "Coffee Break (2nd floor and 3rd floor)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "15:10 - 16:20",
@@ -353,13 +352,13 @@
         "time": "16:20 - 17:30",
         "type": "free",
         "content": "Free Time",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "17:30 - 23:30",
         "type": "banquet",
         "content": "Banquet: The Banquet Hall, Ravintola Töölö, Runeberginkatu 14-16 Dinner, Awards, The Light Show & Stephen S. Yau's 90th BD Celebration",
-        "spans": 13
+        "spans": 14
       }
     ],
     "friday": [
@@ -378,13 +377,13 @@
         "time": "09:40 - 10:50",
         "type": "keynote",
         "content": "Plenary Panel: Recent advances, and Future Directions of Quality Compliance in Services Computing, Chair: Stephen Yau | Auditorium (F2044)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "10:50 - 11:10",
         "type": "break",
         "breakText": "Coffee Break (2nd floor and 3rd floor)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "11:10 - 12:20",
@@ -401,17 +400,18 @@
         "time": "12:20 - 12:30",
         "type": "networking",
         "content": "Networking Session (Agora, Fabian, and Fuksi areas)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "12:30 - 13:40",
         "type": "lunch",
         "content": "Lunch Break. Lunch Provided at the Conference Venue",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "13:40 - 14:50",
         "sessions": [
+          { "name": "SUS-SYM-S1", "room": "F3003" },
           { "name": "SSEedu-SYM-S7", "room": "F3005" },
           { "name": "CWS-CON-S23", "room": "F2044" },
           { "name": "CWS-CON-S24", "room": "F2089" },
@@ -423,15 +423,17 @@
         "time": "14:50 - 15:10",
         "type": "break",
         "breakText": "Coffee Break (2nd floor and 3rd floor)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "15:10 - 16:20",
         "sessions": [
+          { "name": "SUS-SYM-S2", "room": "F3003" },
           { "name": "CWS-CON-S26", "room": "F2044" },
           { "name": "CWS-CON-S27", "room": "F2089" },
           { "name": "CWS-CON-S28", "room": "F3010" },
-          { "name": "CLD-CON-S12", "room": "F4050" }
+          { "name": "CLD-CON-S12", "room": "F4050" },
+          { "name": "CLD-CON-S14", "room": "F3020" }
         ]
       },
       {
@@ -441,7 +443,8 @@
           { "name": "CWS-CON-S30", "room": "F2089" },
           { "name": "CWS-CON-S31", "room": "F3010" },
           { "name": "CLD-CON-S13", "room": "F4050" },
-          { "name": "CLD-CON-S14", "room": "F4050" }
+          { "name": "CLD-CON-S14", "room": "F4050" },
+          { "name": "CLD-CON-S14", "room": "F3020" }
         ]
       }
     ],
@@ -458,7 +461,7 @@
         "time": "09:40 - 10:00",
         "type": "break",
         "breakText": "Coffee Break (2nd floor)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "10:00 - 11:10",
@@ -480,26 +483,21 @@
         "time": "12:20 - 12:30",
         "type": "networking",
         "content": "Networking Session (Agora, Fabian, and Fuksi areas)",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "12:30 - 13:40",
         "type": "lunch",
         "content": "Lunch Break. Lunch Provided at the Conference Venue",
-        "spans": 13
+        "spans": 14
       },
       {
         "time": "13:40 - 14:50",
-        "type": "empty",
-        "content": "",
-        "spans": 13
-      },
-      {
-        "time": "14:50 - 16:00",
         "type": "closing",
         "content": "Congress Town Hall & Community Feedback, Congress Closing | Auditorium (F2044)",
-        "spans": 13
+        "spans": 14
       }
+
     ]
   }
 }

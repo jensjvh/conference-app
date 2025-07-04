@@ -115,7 +115,7 @@ const UsefulLinks = () => {
                 variant="body1"
                 sx={{ mb: 6, color: "black", fontSize: "1.25rem", lineHeight: 1.6 }}
               >
-        <strong>When:</strong> Tuesday 8th July 2025 at 16:40 – 18:00<br />
+        <strong>When:</strong> Tuesday 8th July 2025 at 16:40 – 18:00<br /><br />
         <strong>Where:</strong> Gather in the lobby
       </Typography>
 
@@ -147,10 +147,11 @@ const UsefulLinks = () => {
             The Senate Square features a sound installation (digital carillon music) called the Sound of the Senate Square. It is a modernized version of the European glockenspiel, in which the sound travels from one building to the next. The composition will start at 17:49 and it will run for 5 minutes and 18 seconds. The optimal listening location is near the square’s central monument.
           </Typography>
         <Typography variant="h4" sx={{ mb: 2 }}>The Main Building</Typography>
-           <Typography
+            <Typography
                     variant="body1"
-                    sx={{ mb: 3, color: "black", fontSize: "1.25rem", lineHeight: 1.6 }}
+                    sx={{ mb: 6, color: "black", fontSize: "1.25rem", lineHeight: 1.6 }}
                   >
+            Address: Fabianinkatu 33 <br /><br />
             Designed by architect Carl Ludvig Engel and completed in 1832, the Main Building is one of Engel’s signature Empire-style works. It epitomizes early 19th-century neoclassical ideals. As part of Engel's larger master plan for the Senate Square, it forms a visual dialogue with the Cathedral, Government Palace, and the National Library. Between 1934 and 1937 architect J.S. Sirén expanded the building to fill the entire block. During the 1944 bombing raids, original murals in the Great Hall were lost. The most recent comprehensive restoration, completed in 2021, refreshed historic finishes while updating the infrastructure for teaching and events. 
 
           </Typography>
@@ -169,7 +170,7 @@ const UsefulLinks = () => {
                     variant="body1"
                     sx={{ mb: 6, color: "black", fontSize: "1.25rem", lineHeight: 1.6 }}
                   >
-           Address: Unioninkatu 36 <br />
+           Address: Unioninkatu 36 <br /><br />
 
             Engel meant this building to be a sanctuary for Finland’s literary heritage at a time when its language and culture were fighting for recognition under Russian rule. The lofty Corinthian portico and carved swags evoke the idea of “knowledge as crown”  — a message underscored in 1863 when the first Finnish-language volumes were formally added to its collections. During World War II, librarians famously smuggled rare manuscripts to rural churches for safekeeping, safeguarding works that today underpin Finnish national identity. 
           </Typography>
@@ -220,7 +221,7 @@ const UsefulLinks = () => {
                     variant="body1"
                     sx={{ mb: 3, color: "black", fontSize: "1.25rem", lineHeight: 1.6 }}
                   >
-           Address: Aleksanterinkatu 16<br />
+           Address: Aleksanterinkatu 16<br /><br />
 
           The Sederholm House (1757) is the oldest stone building in Helsinki. Originally, the building hosted Hotel Seurahuone that was the social hub of 19th-century Helsinki with diplomats dining in its grand ballrooms and literary salons debated national identity championing Finnish culture. The building was converted to a museum in 1975 with the curators preserving the old dining rooms and guest chambers turning them into immersive exhibits.  You will see a reconstructed 1880s grocery shop corner and a turn-of-the-century living room where families once gathered to hear news read aloud by candlelight.
           </Typography>
@@ -242,7 +243,7 @@ const UsefulLinks = () => {
                      sx={{ mb: 3, color: "black", fontSize: "1.25rem", lineHeight: 1.6 }}
                    >
             Address: Pohjoisesplanadi 11–13
-            <br />
+            <br /><br />
             Once the city’s police headquarters, this building took on new civic duties after 1918, hosting council meetings that shaped early Finnish democracy. Its lantern cupola was lit nightly to signal that public records could be inspected by any citizen – an early gesture toward transparency. 
           </Typography>
           <img
@@ -261,7 +262,7 @@ const UsefulLinks = () => {
                    >
             Address:  Eteläranta 18
 
-            <br />
+            <br /><br />
             From its earliest days in 1889, the Market Hall has been the beating heart of Helsinki’s food culture. The building style is a brick-and-iron late-19th-century. 
           </Typography>
           <img
