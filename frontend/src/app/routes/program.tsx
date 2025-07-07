@@ -89,7 +89,7 @@ const Program = () => {
         SERVICES 2025 Program
       </Typography>
       <Typography variant="body1" sx={{ fontWeight: 'bold', fontSize: '24px', pb: 4}}>
-        Up-to-date program can be found <Link href="https://services.conferences.computer.org/2025/program/">here</Link>
+        Up-to-date program can be found <Link href="https://services.conferences.computer.org/2025/wp-content/uploads/sites/3/2025/07/SERVICES_webprogram7-5.pdf">here</Link>
       </Typography>
       <ConferenceScheduleTable/>
       <Box
