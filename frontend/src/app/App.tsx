@@ -246,6 +246,36 @@ function App() {
       {/* Replace the old buttons with the new navigation */}
       <ConferenceNav />
       <Box
+        className="p-8 mb-4 bg-white"
+        sx={{ border: 5, borderColor: "lightblue" }}
+      >
+        <Typography
+          variant="body1"
+          component="p"
+          className="text-lg mb-6 leading-relaxed"
+          sx={{
+            fontSize: "1.5rem",
+            fontWeight: "bold",
+          }}
+        >
+          <Link href="https://conferences.computer.org/cloudpub25">
+            Conference Proceedings
+          </Link>
+ 
+        </Typography>
+           <Typography
+          variant="body1"
+          component="p"
+          className="text-lg mb-6 leading-relaxed"
+          sx={{
+            fontSize: "1.2rem",
+          }}
+        >
+          Username: cloudpub25 < br/>
+          Password: conf25//
+          </Typography>
+      </Box>
+       <Box
         className="p-8 bg-white"
         sx={{ border: 5, borderColor: "lightblue" }}
       >
