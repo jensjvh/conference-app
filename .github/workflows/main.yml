@@ -44,7 +44,7 @@ jobs:
       - name: Start Node.js server
         working-directory: ./frontend
         run: |
-          nohup npm start &
+          nohup npm run dev &
           npx wait-on http://localhost:5173
         env:
           CI: true
