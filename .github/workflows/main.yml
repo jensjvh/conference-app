@@ -1,0 +1,53 @@
+name: Node.js Server and Selenium Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      selenium:
+        image: selenium/standalone-chrome:latest
+        ports:
+          - 4444:4444
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Node.js dependencies
+        run: npm install
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Start Node.js server
+        working-directory: ./frontend
+        run: |
+          nohup npm start &
+          npx wait-on http://localhost:5173
+        env:
+          CI: true
+
+      - name: Run Selenium tests
+        env:
+          SELENIUM_REMOTE_URL: http://localhost:4444/wd/hub
+        run: uv run pytest tests/
