@@ -8,3 +8,7 @@ To deploy on the server, in the root folder of the project (currently /run the f
 1. `sudo docker-compose down`, to take down the currently running container
 2. `sudo docker-compose build frontend`, to build the frontend image
 3. `sudo docker-compose --file compose.yaml up --detach`, to run the containers on the server
+
+## Testing
+
+To run tests, first launch the frontend of the app in dev mode using the instructions above. Next, run the tests in the [`tests`](./tests/) directory.
