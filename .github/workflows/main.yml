@@ -26,6 +26,7 @@ jobs:
           node-version: '20'
 
       - name: Install Node.js dependencies
+        working-directory: ./frontend
         run: npm install
 
       - name: Python
@@ -37,6 +38,7 @@ jobs:
         run: pip install uv
 
       - name: Install dependencies
+        working-directory: ./tests
         run: uv sync
 
       - name: Start Node.js server
@@ -50,4 +52,5 @@ jobs:
       - name: Run Selenium tests
         env:
           SELENIUM_REMOTE_URL: http://localhost:4444/wd/hub
-        run: uv run pytest tests/
+        working-directory: ./tests
+        run: uv run pytest
